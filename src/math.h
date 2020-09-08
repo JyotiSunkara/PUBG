@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 
 // Fast Point-In-Cylinder Test by Greg James
 // http://www.flipcode.com/archives/Fast_Point-In-Cylinder_Test.shtml

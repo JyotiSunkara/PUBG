@@ -1,7 +1,7 @@
 #include "shader.h"
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
+#include "GL/glew.h"
+#include "glm/glm.hpp"
 using namespace glm;
 
 #include <fstream>

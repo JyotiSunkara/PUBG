@@ -3,15 +3,15 @@
 #include "loadtexture.h"
 #include "shader.h"
 
-#include "glmmodel/glmmodel.h"
+#include "glmmodel.h"
 
-#include <GL/glew.h>
+#include "GL/glew.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/random.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_inverse.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/random.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/matrix_inverse.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 using namespace glm;
 
 #include <iostream>

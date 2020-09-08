@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
+#include "GL/glew.h"
+#include "glm/glm.hpp"
 
 // Shader wrapper class inspired by that in Luke Benstead's "Beginning OpenGL Game Programming, 2nd Edition"
 class Shader

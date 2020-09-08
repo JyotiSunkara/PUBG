@@ -6,6 +6,9 @@ add_executable(${PROJECT_NAME} ${SRC_LIST})
 include(FindPkgConfig)
 
 find_package( Threads REQUIRED )
+find_package(glm REQUIRED)
+find_package(OpenAL REQUIRED)
+
 
 pkg_check_modules(GLFW3 REQUIRED glfw3)
 include_directories(${GLFW3_INCLUDE_DIRS})
@@ -26,6 +29,8 @@ if (APPLE)
 endif()
 target_link_libraries(${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} ${OPENAL_LIBRARY})
+
 
 # pkg_check_modules(AO REQUIRED ao)
 # include_directories(${AO_INCLUDE_DIRS})

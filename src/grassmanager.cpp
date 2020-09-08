@@ -1,18 +1,18 @@
 #include "grassmanager.h"
 #include "world.h"
 
-#include "objects/player.h"
+#include "player.h"
 
 #include "shader.h"
 #include "math.h"
 #include "profiling.h"
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/random.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/noise.hpp>
+#include "GL/glew.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/random.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/noise.hpp"
 using namespace glm;
 
 #include <iostream>

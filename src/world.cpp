@@ -3,38 +3,38 @@
 #include "terrain.h"
 #include "grassmanager.h"
 
-#include "audio/soundmanager.h"
+#include "soundmanager.h"
 
-#include "objects/player.h"
-#include "objects/hud.h"
-#include "objects/sign.h"
-#include "objects/tree.h"
-#include "objects/treemanager.h"
-#include "objects/drone.h"
-#include "objects/dronemanager.h"
-#include "objects/complexcollider.h"
-#include "objects/aabbcollider.h"
-#include "objects/cylindercollider.h"
+#include "player.h"
+#include "hud.h"
+#include "sign.h"
+#include "tree.h"
+#include "treemanager.h"
+#include "drone.h"
+#include "dronemanager.h"
+#include "complexcollider.h"
+#include "aabbcollider.h"
+#include "cylindercollider.h"
 
-#include "particles/particlelist.h"
-#include "particles/particleconfig.h"
-#include "particles/particlemanager.h"
+#include "particlelist.h"
+#include "particleconfig.h"
+#include "particlemanager.h"
 
 #include "math.h"
 #include "image.h"
 #include "planerenderer.h"
 #include "profiling.h"
 
-#include "lodepng/lodepng.h"					// for world file loading
+#include "lodepng.h"					// for world file loading
 
-#include "glmmodel/glmmodel.h"
+#include "glmmodel.h"
 
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/random.hpp>
-#include <glm/gtx/rotate_vector.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/random.hpp"
+#include "glm/gtx/rotate_vector.hpp"
 using namespace glm;
 
 #include <string>

@@ -1,7 +1,7 @@
 #include "loadtexture.h"
 #include "profiling.h"
 
-#include "lodepng/lodepng.h"
+#include "lodepng.h"
 
 #include "GL/glew.h"
 

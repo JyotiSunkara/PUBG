@@ -2,7 +2,7 @@
 
 #include "AL/al.h"
 
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 
 #include "inttypes.h"
 #include <string>
