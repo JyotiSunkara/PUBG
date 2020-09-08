@@ -1,4 +1,4 @@
-#include "util/gldebugging.h"
+#include "gldebugging.h"
 
 #include <GL/glew.h>
 

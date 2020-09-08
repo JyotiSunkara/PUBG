@@ -1,7 +1,7 @@
-#include "world/world.h"
-#include "world/sky.h"
-#include "world/terrain.h"
-#include "world/grassmanager.h"
+#include "world.h"
+#include "sky.h"
+#include "terrain.h"
+#include "grassmanager.h"
 
 #include "audio/soundmanager.h"
 
@@ -20,21 +20,21 @@
 #include "particles/particleconfig.h"
 #include "particles/particlemanager.h"
 
-#include "util/math.h"
-#include "util/image.h"
-#include "util/planerenderer.h"
-#include "util/profiling.h"
+#include "math.h"
+#include "image.h"
+#include "planerenderer.h"
+#include "profiling.h"
 
 #include "lodepng/lodepng.h"					// for world file loading
 
 #include "glmmodel/glmmodel.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/random.hpp"
-#include "glm/gtx/rotate_vector.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/random.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 using namespace glm;
 
 #include <string>

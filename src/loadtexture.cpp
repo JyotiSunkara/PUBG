@@ -1,5 +1,5 @@
-#include "util/loadtexture.h"
-#include "util/profiling.h"
+#include "loadtexture.h"
+#include "profiling.h"
 
 #include "lodepng/lodepng.h"
 

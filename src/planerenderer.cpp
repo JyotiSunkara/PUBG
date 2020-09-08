@@ -1,9 +1,9 @@
-#include "util/planerenderer.h"
-#include "util/shader.h"
+#include "planerenderer.h"
+#include "shader.h"
 
 #include "GL/glew.h"
-#include "glm/glm.hpp"
-#include "glm/gtc/type_ptr.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace glm;
 
 #include <iostream>
