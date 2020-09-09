@@ -21,11 +21,11 @@ Cross-platform. Tested in Linux Mint (3.19.0-32-generic) and Windows 10.
 See README.md for more information.
 */
 
-#include "world.h"
+#include "world/world.h"
 
-#include "gldebugging.h"
-#include "planerenderer.h"
-#include "loadtexture.h"
+#include "util/gldebugging.h"
+#include "util/planerenderer.h"
+#include "util/loadtexture.h"
 
 #include "GL/glew.h"
 
