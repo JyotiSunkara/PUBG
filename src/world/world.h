@@ -26,8 +26,7 @@ class CylinderCollider;
 
 class Image;
 
-class World
-{
+class World {
 private:
 	static const int SHADOW_MAP_SIZE;						// how big we want the terrain static shadow map to be
 
