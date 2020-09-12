@@ -1,11 +1,22 @@
-Graphics Boilerplate Code
-=========================
+# PUBG 
 
-This is boilerplate code for the assignments which might be helpful.
+An OpenGL implementation of a three-dimensional third-person-shooter open world game inspired by the wildly popular Player Unknown’s Battlegrounds (PUBG). 
 
 
-License
--------
-The MIT License https://meghprkh.mit-license.org/
+### Playing The Game 
 
-Copyright &copy; 2018 Megh Parikh <meghprkh@gmail.com>
+### Features 
+- Grass
+- Trees
+- World
+- Shooter
+- 
+
+### Special Features 
+
+- Gun Recoil
+- Waving Grass
+- Smoke
+- Sound
+- 
+

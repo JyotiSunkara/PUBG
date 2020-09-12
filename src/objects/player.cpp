@@ -28,9 +28,9 @@ using namespace glm;
 #include <string>
 using namespace std;
 
-const float Player::PLAYER_HEIGHT = 1.7;				// how high the camera is off the ground
+const float Player::PLAYER_HEIGHT = 3;				// how high the camera is off the ground
 
-const int Player::MAX_ROUNDS_PER_CLIP = 12;				// how many bullets can we fire before reloading?
+const int Player::MAX_ROUNDS_PER_CLIP = 20;				// how many bullets can we fire before reloading?
 
 const float Player::GUN_RECOIL_ANIM_TIME = 0.25;		// length of the gun recoil animation in seconds
 const float Player::DEATH_IMPACT_ANIM_TIME = 0.5;		// length of the player impact animation in seconds
@@ -406,7 +406,7 @@ void Player::controlGunRecoil(float dt)
 		gunRecoilTimer = GUN_RECOIL_ANIM_TIME;
 	}
 
-	// we don't have to wait for the entire recoil sequence to finish before firing the next shot
+	// Don't have to wait for the entire recoil sequence to finish before firing the next shot
 	if(gunRecoilTimer >= ALLOW_TRIGGER_PRESS_TIME)
 	{
 		gunRecoilTimer = GUN_RECOIL_ANIM_TIME;
@@ -495,7 +495,7 @@ void Player::computeCameraOrientation()
 	camera = rotate(camera, lookAngleY, vec3(0.0, 1.0, 0.0));
 	camera = rotate(camera, lookAngleX, vec3(1.0, 0.0, 0.0));
 
-	// we extract the vectors because this is more useful than maintaining a matrix and then extracting them repeatedly later on
+	// Extract the vectors because this is more useful than maintaining a matrix and then extracting them repeatedly later on
 	cameraForward = -vec3(camera[2]);
 	cameraSide = vec3(camera[0]);
 	cameraUp = vec3(camera[1]);
@@ -505,7 +505,7 @@ void Player::computeCameraOrientation()
 void Player::computeGunPosition()
 {
 	// position the gun to the lower right of the player
-	const vec3 GUN_BASE_OFFSET(0.2, -0.125, 0.25);
+	const vec3 GUN_BASE_OFFSET(0.2, -0.225, 0.55);
 
 	// controls the strength of the bobbing effect
 	const float GUN_BOB_AMOUNT = 0.006;
