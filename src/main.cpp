@@ -1,26 +1,3 @@
-/*
-No-Fly Zone
-Geoff Nagy
-
-This is a small first-person shooter where the goal is to stay alive and shoot down quadcopters that have
-become sentient and are trying to kill you. I wrote this game to provide a learning experience for anyone
-wanting to learn about game development.
-
-The main development philosophy behind this project was to keep everything as simple as possible. To keep
-things simple I've intentionally tried to avoid overengineering.
-
-This project uses OpenGL 3.2 Core. This GL version is widely supported by older and more modern hardware
-and prevents the use of deprecated functionality. While the source code is heavily commented, it doesn't
-spend a lot of time explaining how OpenGL works or the particular facilities I've chosen to use. A good
-starting point is Luke Benstead's "Beginning OpenGL Game Programming, 2nd Edition", although it is now
-slightly out of date. A few of my GitLab projects go into more detail about things like instanced
-rendering, for example, which I make heavy use of in this project.
-
-Cross-platform. Tested in Linux Mint (3.19.0-32-generic) and Windows 10.
-
-See README.md for more information.
-*/
-
 #include "world/world.h"
 
 #include "util/gldebugging.h"

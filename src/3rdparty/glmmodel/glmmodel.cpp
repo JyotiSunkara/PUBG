@@ -1,13 +1,3 @@
-/*
- *  GLM library.  Wavefront .obj file format reader/writer/manipulator.
- *
- *  Written by Nate Robins, 1997.
- *  email: ndr@pobox.com
- *  www: http://www.pobox.com/~ndr
-
-Modified by Geoff Nagy a lot of times. Deal with it.
- */
-
 // should probably fix the GLM library to not need this
 #pragma GCC diagnostic ignored "-Wunused-result"
 
