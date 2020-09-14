@@ -273,7 +273,7 @@ void World::update(float dt)
 	grass -> update(dt);
 	drones -> update(dt);
 
-	// has an update caused the player to die?---if so, deal with that
+	// has something caused the player to die? if yes, deal with that
 	controlPlayerDeath(dt);
 
 	// remove any expired particles, and update any existing ones
@@ -287,6 +287,8 @@ void World::update(float dt)
 	// we can update the camera and gun positions now that the player is fully up-to-date
 	player -> computeCameraOrientation();
 	player -> computeGunPosition();
+	player -> computeArgonPosition();
+
 
 	// re-build our perspective view (our projection stays the same, of course)
 	controlCamera();
@@ -299,12 +301,14 @@ void World::render()
 	vec3 cameraUp = player -> getCameraUp();
 	vec3 playerPos = player -> getPos();
 
-	// a whole lotta rendering going on here
+	// A whole lotta rendering here
 	sky -> render(perspectiveProjection, perspectiveView, playerPos);
 	terrain -> render(perspectiveProjection, perspectiveView, modelMat);
 	trees -> render(perspectiveProjection, perspectiveView, modelMat);
 	grass -> render(perspectiveProjection, perspectiveView, modelMat);
-	player -> render(perspectiveProjection, perspectiveView);
+	player -> renderGun(perspectiveProjection, perspectiveView);
+	player -> renderArgon(perspectiveProjection, perspectiveView);
+
 	sign -> render(perspectiveProjection, perspectiveView);
 	drones -> render(perspectiveProjection, perspectiveView);
 	particles -> render(perspectiveProjection, perspectiveView, cameraSide, cameraUp);

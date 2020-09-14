@@ -28,17 +28,16 @@ using namespace glm;
 #include <string>
 using namespace std;
 
-const float Player::PLAYER_HEIGHT = 3;				// how high the camera is off the ground
+const float Player::PLAYER_HEIGHT = 3;					// how high the camera is off the ground
 
-const int Player::MAX_ROUNDS_PER_CLIP = 20;				// how many bullets can we fire before reloading?
+const int Player::MAX_ROUNDS_PER_CLIP = 30;				// how many bullets can we fire before reloading?
 
 const float Player::GUN_RECOIL_ANIM_TIME = 0.25;		// length of the gun recoil animation in seconds
 const float Player::DEATH_IMPACT_ANIM_TIME = 0.5;		// length of the player impact animation in seconds
 
 const float Player::MAX_LOOK_PITCH = M_PI_2 - 0.2;		// min and max pitch angle for the camera in radians
 
-Player::Player(GLFWwindow *window, World* world, vec3 pos)
-{
+Player::Player(GLFWwindow *window, World* world, vec3 pos) {
 	this -> window = window;
 	this -> world = world;
 	this -> pos = pos;
@@ -190,7 +189,7 @@ void Player::update(float dt)
 	controlListener();
 }
 
-void Player::render(mat4 &projection, mat4 &view)
+void Player::renderGun(mat4 &projection, mat4 &view)
 {
 	const vec3 GUN_SIZE(-0.225, 0.225, 0.225);
 	const float GUN_RECOIL_ROTATE_STRENGTH = -4.0;
@@ -240,6 +239,53 @@ void Player::render(mat4 &projection, mat4 &view)
 	// finally, render it
 	glBindVertexArray(vaoGun);
 	glDrawArrays(GL_TRIANGLES, 0, numGunVertices);
+}
+
+void Player::renderArgon(mat4 &projection, mat4 &view)
+{
+	const vec3 ARGON_SIZE(-0.225, 0.225, 0.225);
+
+	mat4 ArgonMat;						// model matrix for Argon when rendering
+	mat4 viewLocalMat;					// view matrix with positional information removed 
+	mat4 normalMat;						// inverse transpose of model matrix used so that the Argon lighting is computed correctly
+
+	// orient the gun in the same direction as the camera 
+	ArgonMat[0] = vec4(cameraSide, 0.0);
+	ArgonMat[1] = vec4(cameraUp, 0.0);
+	ArgonMat[2] = vec4(cameraForward, 0.0);
+	ArgonMat[3] = vec4(argonPos, 1.0);
+	ArgonMat = scale(ArgonMat, ARGON_SIZE);
+
+	// Argon is pretty small relative to the world
+	viewLocalMat = view;
+	viewLocalMat[3] = vec4(0.0, 0.0, 0.0, 1.0);
+
+	// Normal matrix for lighting
+	normalMat = inverseTranspose(mat3(ArgonMat));
+
+	// Yeeeeee!
+	shader -> bind();
+	shader -> uniformMatrix4fv("u_Projection", 1, value_ptr(projection));
+	shader -> uniformMatrix4fv("u_View", 1, value_ptr(viewLocalMat));
+	shader -> uniformMatrix4fv("u_Model", 1, value_ptr(ArgonMat));
+	shader -> uniformMatrix3fv("u_Normal", 1, value_ptr(normalMat));
+
+	// Use diffuse, normal, specular, and emission texture maps when rendering for nice effects
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, gunDiffuseMap);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, gunNormalMap);
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, gunSpecularMap);
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, gunEmissionMap);
+
+	// we don't want Argon transparent
+	glDisable(GL_BLEND);
+
+	// Finally, render it
+	glBindVertexArray(vaoArgon);
+	glDrawArrays(GL_TRIANGLES, 0, numArgonVertices);
 }
 
 void Player::controlDeathImpact(float dt)
@@ -520,8 +566,8 @@ void Player::computeCameraOrientation()
 
 void Player::computeGunPosition()
 {
-	// position the gun to the lower right of the player
-	const vec3 GUN_BASE_OFFSET(0.2, -0.225, 0.55);
+	// position the gun to the lower right of Argon
+	const vec3 GUN_BASE_OFFSET(0.3, -0.2, 1.0);
 
 	// controls the strength of the bobbing effect
 	const float GUN_BOB_AMOUNT = 0.006;
@@ -532,11 +578,29 @@ void Player::computeGunPosition()
 	// controls the offset of the reloading animation
 	const float GUN_RELOAD_MOVE_AMOUNT = -0.25;
 
-	// compute the base position of the gun, and add the bobbing effect, the recoil, and the reloading offset
+	// Base position of the gun
 	gunPos = (cameraForward * GUN_BASE_OFFSET.z) + (cameraSide * GUN_BASE_OFFSET.x) + (cameraUp * GUN_BASE_OFFSET.y);
+	// Bobbing effect
 	gunPos += (cameraSide * gunWalkBobAmount * GUN_BOB_AMOUNT) - (cameraUp * abs(gunWalkBobAmount) * GUN_BOB_AMOUNT);
+	// Recoil
 	gunPos += cameraUp * gunRecoilAmount * GUN_RECOIL_MOVE_STRENGTH;
+	// Reloading offset
 	gunPos += cameraUp * gunReloadOffsetAmount * GUN_RELOAD_MOVE_AMOUNT;
+}
+
+void Player::computeArgonPosition()
+{
+	// position the gun to the lower right of the player
+	const vec3 BASE_OFFSET(0.0, -0.5, 0.55);
+
+	// controls the strength of the bobbing effect
+	const float BOB_AMOUNT = 0.006;
+
+	// Base position of the gun
+	argonPos = (cameraForward * BASE_OFFSET.z) + (cameraSide * BASE_OFFSET.x) + (cameraUp * BASE_OFFSET.y);
+	// Bobbing effect
+	argonPos += (cameraSide * gunWalkBobAmount * BOB_AMOUNT) - (cameraUp * abs(gunWalkBobAmount) * BOB_AMOUNT);
+
 }
 
 void Player::computeWalkingVectors()

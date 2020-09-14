@@ -37,6 +37,7 @@ private:
 
 	glm::vec3 pos;							// global position of player
 	glm::vec3 gunPos;						// position of gun relative to player
+	glm::vec3 argonPos;						// position of Argon
 	glm::vec3 forward;						// forwards vector of player
 	glm::vec3 side;							// sideway vector of player (used for strafing)
 	glm::vec3 up;							// up vector of player
@@ -132,12 +133,14 @@ public:
 	// update routines //
 
 	void update(float dt);
-	void render(glm::mat4 &projection, glm::mat4 &view);
+	void renderGun(glm::mat4 &projection, glm::mat4 &view);
+	void renderArgon(glm::mat4 &projection, glm::mat4 &view);
 
 	// these are called externally by the game world, although they probably don't
 	// need to be, strictly speaking...
 	void computeCameraOrientation();
 	void computeGunPosition();
+	void computeArgonPosition();
 
 	// some simple getters/setters //
 
