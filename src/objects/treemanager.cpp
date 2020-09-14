@@ -109,7 +109,7 @@ void TreeManager::loadShaders()
 	treeShader -> uniform1i("u_NormalMap", 1);
 	treeShader -> uniform1f("u_NormalMapStrength", 2.0);
 	treeShader -> uniformVec3("u_Sun", World::SUN_DIRECTION);
-	treeShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	treeShader -> uniformVec3("fogColor", vec3(0.65, 0.65, 0.65));
 	treeShader -> uniform1i("fogFlag", fogFlag);
 	treeShader -> unbind();
 }

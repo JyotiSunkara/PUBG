@@ -169,7 +169,7 @@ void DroneManager::loadShader()
 	bodyShader -> uniform1f("u_SpecularIntensity", 6.0);
 	bodyShader -> uniform1f("u_SpecularHardness", 16.0);
 	bodyShader -> uniform1f("u_NormalMapStrength", 2.0);
-	bodyShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	bodyShader -> uniformVec3("fogColor", vec3(0.65, 0.65, 0.65));
 	bodyShader -> uniform1i("fogFlag", fogFlag);
 	bodyShader -> unbind();
 
@@ -183,7 +183,7 @@ void DroneManager::loadShader()
 	bladesShader -> bind();
 	bladesShader -> uniform1i("u_Texture", 0);
 	bladesShader -> uniformVec4("u_Color", vec4(0.0, 0.0, 0.0, 1.0));
-	bladesShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	bladesShader -> uniformVec3("fogColor", vec3(0.65, 0.65, 0.65));
 	bladesShader -> uniform1i("fogFlag", fogFlag);
 	bladesShader -> unbind();
 }

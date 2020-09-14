@@ -66,7 +66,7 @@ void Sky::loadShader()
 	shader -> bindAttrib("a_TexCoord", 2);
 	shader -> link();
 	shader -> bind();
-	shader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	shader -> uniformVec3("fogColor", vec3(0.65, 0.65, 0.65));
 	shader -> uniform1i("fogFlag", fogFlag);
 	shader -> unbind();
 }

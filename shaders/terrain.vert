@@ -17,7 +17,7 @@ out float v_Height;
 out float visibility;
 
 const float density = 0.01;
-const float gradient = 0.7;
+const float gradient = 0.6;
 
 void main()
 {
