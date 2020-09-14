@@ -28,7 +28,6 @@ private:
 
 	// load up our resources, pretty self-explanatory
 	void setupVBOs(int width, int length, float squareSize, float *heights);
-	void loadShader();
 	void loadTextures();
 
 public:
@@ -37,6 +36,7 @@ public:
 
 	// render the entire terrain in one fell swoop
 	void render(glm::mat4 &projection, glm::mat4 &view, glm::mat4 &model);
+	void loadShader();
 
 	// interaction with terrain
 	float getHeight(glm::vec3 pos);

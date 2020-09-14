@@ -16,8 +16,8 @@ out vec4 v_Color;
 out float v_Height;
 out float visibility;
 
-const float density = 0.007;
-const float gradient = 1.5;
+const float density = 0.01;
+const float gradient = 0.7;
 
 void main()
 {

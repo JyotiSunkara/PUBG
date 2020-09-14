@@ -262,6 +262,7 @@ World::~World()
 
 void World::update(float dt)
 {
+
 	// remove anything that needs removal
 	flushGarbage();
 
@@ -291,12 +292,20 @@ void World::update(float dt)
 	controlCamera();
 }
 
+bool notEntered = true;
+extern bool fogFlag;
+
 void World::render()
 {
 	mat4 modelMat = mat4(1.0);
 	vec3 cameraSide = player -> getCameraSide();
 	vec3 cameraUp = player -> getCameraUp();
 	vec3 playerPos = player -> getPos();
+
+	if(fogFlag && notEntered) {
+		terrain->loadShader();
+		notEntered = false;
+	}
 
 	// A whole bunch of rendering here
 	sky -> render(perspectiveProjection, perspectiveView, playerPos);
