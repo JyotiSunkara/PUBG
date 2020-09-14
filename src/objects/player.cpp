@@ -95,8 +95,8 @@ Player::Player(GLFWwindow *window, World* world, vec3 pos)
 
 Player::~Player()
 {
-	glDeleteBuffers(3, vbos);
-	glDeleteVertexArrays(1, &vao);
+	glDeleteBuffers(3, vbosGun);
+	glDeleteVertexArrays(1, &vaoGun);
 	delete shader;
 }
 
@@ -111,10 +111,26 @@ void Player::loadGun()
 		glmScale(geometry, 1.0);
 
 		// build our buffer objects and then fill them with the geometry data we loaded
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
-		glGenBuffers(3, vbos);
-		glmBuildVBO(geometry, &numGunVertices, &vao, vbos);
+		glGenVertexArrays(1, &vaoGun);
+		glBindVertexArray(vaoGun);
+		glGenBuffers(3, vbosGun);
+		glmBuildVBO(geometry, &numGunVertices, &vaoGun, vbosGun);
+	}
+
+
+	GLMmodel *argonGeometry;
+
+    // attempt to read the file; glmReadObj() will just quit if we can't
+    argonGeometry = glmReadOBJ((char*)"../mesh/Argon.obj");
+    if(argonGeometry)
+    {
+		glmScale(argonGeometry, 1.0);
+
+		// build our buffer objects and then fill them with the argonGeometry data loaded
+		glGenVertexArrays(1, &vaoArgon);
+		glBindVertexArray(vaoArgon);
+		glGenBuffers(3, vbosArgon);
+		glmBuildVBO(argonGeometry, &numArgonVertices, &vaoArgon, vbosArgon);
 	}
 }
 
@@ -181,7 +197,7 @@ void Player::render(mat4 &projection, mat4 &view)
 	const float GUN_RELOAD_ROTATE_AMOUNT = M_PI_2;
 
 	mat4 gunMat;						// model matrix for gun when rendering
-	mat4 viewLocalMat;					// view matrix with positional information removed (see comments below for why we do this)
+	mat4 viewLocalMat;					// view matrix with positional information removed 
 	mat4 normalMat;						// inverse transpose of model matrix---used so that the gun lighting is computed correctly
 
 	// orient the gun in the same direction as the camera (with the recoil and reloading offsets applied)
@@ -222,7 +238,7 @@ void Player::render(mat4 &projection, mat4 &view)
 	glDisable(GL_BLEND);
 
 	// finally, render it
-	glBindVertexArray(vao);
+	glBindVertexArray(vaoGun);
 	glDrawArrays(GL_TRIANGLES, 0, numGunVertices);
 }
 

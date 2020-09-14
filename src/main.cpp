@@ -180,11 +180,9 @@ void openWindow()
     cout << "-- GL renderer:  " << (char*)glGetString(GL_RENDERER) << endl;
 	cout << "-- GLSL version: " << (char*)glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
 
-	// OpenGL callback debugging is extremely useful, so enable it if we're in debug mode
+	// OpenGL callback debugging 
 	#ifdef DEBUG
 		initGLDebugger();
-	#else
-		cout << "-- GL callback debugging is disabled in non-Debug configurations" << endl;
 	#endif
 }
 

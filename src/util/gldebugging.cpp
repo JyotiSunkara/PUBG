@@ -3,21 +3,13 @@
 #include <GL/glew.h>
 
 #include <assert.h>
-#ifdef WIN32
-	#include <windows.h>
-#endif
 
 #include <iostream>
 using namespace std;
 
-// thanks to:
-// https://blog.nobel-joergensen.com/2013/02/17/debugging-opengl-part-2-using-gldebugmessagecallback/
+// From here https://blog.nobel-joergensen.com/2013/02/17/debugging-opengl-part-2-using-gldebugmessagecallback/
 
-#ifdef WIN32
-static void APIENTRY openglCallbackFunction(GLenum source,
-#else
 static void openglCallbackFunction(GLenum source,
-#endif
 										    GLenum type,
 										    GLuint id,
 										    GLenum severity,

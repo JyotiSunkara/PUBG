@@ -288,9 +288,6 @@ bool Terrain::raycast(vec3 start, vec3 end, vec3 &intersect)
 {
 	const float RAYCAST_PRECISION = 0.01;			// 1cm
 
-	// this isn't a terribly efficient raycast---all we're really doing is advancing two points, separated by squareSize
-	// meters, forward by squareSize meters, until the furthest one intersects and the closer one doesn't; if this occurs,
-	// we can then do a binary search to find a "close enough" point of intersection with the terrain
 
 	vec3 offset = end - start;					// vector from start of ray to the end of the ray
 	vec3 forward = normalize(offset);			// direction of the ray

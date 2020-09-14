@@ -89,8 +89,12 @@ private:
 
 	Shader *shader;							// the "solid" shader program we use when rendering the gun
 
-	GLuint vao;								// vertex array object (i.e., GL state) for the gun
-	GLuint vbos[3];							// vertex buffer objects (i.e., vertex, tex coords, normals) for the gun
+	GLuint vaoGun;							// vertex array object (i.e., GL state) for the gun
+	GLuint vbosGun[3];						// vertex buffer objects (i.e., vertex, tex coords, normals) for the gun
+
+	GLuint vaoArgon;						// vertex array object (i.e., GL state) for Argon
+	GLuint vbosArgon[3];					// vertex buffer objects (i.e., vertex, tex coords, normals) for Argon
+	int numArgonVertices;					// number of vertices, required for GL rendering call
 
 	int numGunVertices;						// number of vertices, required for GL rendering call
 	GLuint gunDiffuseMap;					// plain texture used on the gun

@@ -105,12 +105,7 @@ void GrassManager::setupVBOs()
 	glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 	glVertexAttribDivisor(3, 1);
 
-	// the model matrices for each blade will vary through the life of the grass; notice that we're doing
-	// something very sneaky here and defining vertex attributes to be grouped together according to their
-	// column in the 4x4 model matrices...in other words, all of the side vectors, and then all of the up
-	// vectors, the forward vectors, and then the position vectors, are all grouped together in this particular
-	// vertex buffer object---this allows us to update only the positions of the grass blades with a single
-	// glSubBufferData() call, which is why this works so efficiently
+
     glBindBuffer(GL_ARRAY_BUFFER, vbos[4]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec4) * maxBlades * 4, NULL, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(4);
