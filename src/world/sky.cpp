@@ -1,5 +1,8 @@
 #include "world/sky.h"
 
+#include "objects/player.h"
+extern bool fogFlag;
+
 #include "util/loadtexture.h"
 #include "util/shader.h"
 
@@ -63,6 +66,8 @@ void Sky::loadShader()
 	shader -> bindAttrib("a_TexCoord", 2);
 	shader -> link();
 	shader -> bind();
+	shader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	shader -> uniform1i("fogFlag", fogFlag);
 	shader -> unbind();
 }
 

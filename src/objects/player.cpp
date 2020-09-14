@@ -376,9 +376,7 @@ void Player::controlMovingAndFiring(float dt)
 	if(glfwGetKey(window, 'F') == GLFW_PRESS)
 	{		
 		if (!fogFlag) {
-			
 			fogFlag = true;
-
 		} 
 	}	
 
@@ -386,7 +384,6 @@ void Player::controlMovingAndFiring(float dt)
 	if(glfwGetKey(window, 'C') == GLFW_PRESS) {
 		
 		if(fogFlag) {
-			cout << "Fog Off! \n";
 			fogFlag = false;
 		}
 	}

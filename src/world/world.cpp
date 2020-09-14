@@ -302,9 +302,17 @@ void World::render()
 	vec3 cameraUp = player -> getCameraUp();
 	vec3 playerPos = player -> getPos();
 
+	// Call shaders when needed to enable or diable fog 
 	if(fogFlag && notEntered) {
 		terrain->loadShader();
+		sky->loadShader();
 		notEntered = false;
+	}
+
+	if(!fogFlag && !notEntered) {
+		terrain->loadShader();
+		sky->loadShader();
+		notEntered = true;
 	}
 
 	// A whole bunch of rendering here

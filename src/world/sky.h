@@ -20,11 +20,11 @@ private:
 	// load up required resources
 	void loadSkyModel();
 	void loadTextures();
-	void loadShader();
 
 public:
 	Sky();
 	~Sky();
+	void loadShader();
 
 	void render(glm::mat4 &projection, glm::mat4 &view, glm::vec3 &playerPos);
 };
