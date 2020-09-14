@@ -53,7 +53,6 @@ private:
 
     void loadModels();					// load resources, self-explanatory
     void loadTextures();
-    void loadShader();
     void loadSounds();
 
     // batch-rendering the entire group of drones requires only two rendering calls: one for the body, one for the blades
@@ -69,6 +68,7 @@ public:
 
 	// update all drones
 	void update(float dt);
+    void loadShader();
 
 	// render all drones
 	void render(glm::mat4 &projection, glm::mat4 &view);

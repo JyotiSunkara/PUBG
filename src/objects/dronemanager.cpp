@@ -1,6 +1,8 @@
 #include "objects/dronemanager.h"
 #include "objects/drone.h"
 #include "objects/complexcollider.h"
+#include "objects/player.h"
+extern bool fogFlag;
 
 #include "util/shader.h"
 #include "util/loadtexture.h"
@@ -167,6 +169,8 @@ void DroneManager::loadShader()
 	bodyShader -> uniform1f("u_SpecularIntensity", 6.0);
 	bodyShader -> uniform1f("u_SpecularHardness", 16.0);
 	bodyShader -> uniform1f("u_NormalMapStrength", 2.0);
+	bodyShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	bodyShader -> uniform1i("fogFlag", fogFlag);
 	bodyShader -> unbind();
 
 	// shader for the drone blades
@@ -179,6 +183,8 @@ void DroneManager::loadShader()
 	bladesShader -> bind();
 	bladesShader -> uniform1i("u_Texture", 0);
 	bladesShader -> uniformVec4("u_Color", vec4(0.0, 0.0, 0.0, 1.0));
+	bladesShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	bladesShader -> uniform1i("fogFlag", fogFlag);
 	bladesShader -> unbind();
 }
 

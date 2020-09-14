@@ -12,6 +12,10 @@ in vec2 a_TexCoord;
 out vec2 v_TexCoord;
 out vec3 v_Normal;
 out vec4 v_VertexPos;
+out float visibility;
+
+const float density = 0.01;
+const float gradient = 0.7;
 
 void main()
 {
@@ -20,4 +24,7 @@ void main()
     v_TexCoord = a_TexCoord;
 
     gl_Position = u_Projection * v_VertexPos;
+    float dist = length(gl_Position);
+	visibility = exp(-pow(dist * density, gradient));
+	visibility = clamp(visibility, 0.0, 1.0);
 }

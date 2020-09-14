@@ -306,12 +306,14 @@ void World::render()
 	if(fogFlag && notEntered) {
 		terrain->loadShader();
 		sky->loadShader();
+		drones->loadShader();
 		notEntered = false;
 	}
 
 	if(!fogFlag && !notEntered) {
 		terrain->loadShader();
 		sky->loadShader();
+		drones->loadShader();
 		notEntered = true;
 	}
 

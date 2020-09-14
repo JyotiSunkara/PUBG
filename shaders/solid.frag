@@ -14,9 +14,12 @@ uniform vec3 u_MaterialSpecular;
 uniform float u_SpecularIntensity;
 uniform float u_SpecularHardness;
 uniform float u_NormalMapStrength;
+uniform vec3 fogColor;
+uniform bool fogFlag;
 
 in vec2 v_TexCoord;
 in vec3 v_Normal;
+in float visibility;
 
 out vec4 f_Color;
 
@@ -44,4 +47,7 @@ void main()
 	litColor = mix(litColor, texColor, minBrightness);
 
 	f_Color = vec4(litColor, 1.0);
+	if(fogFlag) {
+		f_Color = mix(vec4(fogColor, 1.0), f_Color, visibility);
+	}
 }
