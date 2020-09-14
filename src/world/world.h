@@ -107,7 +107,7 @@ public:
 	void render();
 
 	void addGarbageItem();					// indicate we want something removed
-	void flushGarbage();					// take out the trash!---are there any objects we need to get rid of?
+	void flushGarbage();					// take out the trash! are there any objects we need to get rid of?
 
 	// create a particle of the given type and add it to the particle system the world owns
 	void addParticle(ParticleConfig *config, glm::vec3 pos, float lifeFactor = 1.0);

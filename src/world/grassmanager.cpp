@@ -139,7 +139,7 @@ void GrassManager::loadShader()
 
 void GrassManager::placeGrass()
 {
-	const float GLM_RAND_FIX = 0.6;		// see below for why we need this; it's a GLM precision bug of some kind...
+	const float GLM_RAND_FIX = 0.6;		
 
 	const float MIN_HEIGHT = 0.4;
 	const float MAX_HEIGHT = 0.8;
@@ -167,15 +167,12 @@ void GrassManager::placeGrass()
 	// build a list of grass objects that we need to place
 	for(i = 0; i < maxBlades; i ++)
 	{
-		// pick a location on the terrain within the specified radius (rectangular area, actually...);
-		// for some annoying reason, GLM's random is not very precise, and we can't seem to get values
-		// above around 79.5 here, causing problems with pathways forming in the grass
+		// pick a location on the terrain within the specified radius 
 		randomPos = vec3(linearRand(-grassAreaRadius, grassAreaRadius + GLM_RAND_FIX),
 						 0.0,
 						 linearRand(-grassAreaRadius, grassAreaRadius + GLM_RAND_FIX));
 
-		// assign a random brightness value to the blade for extra realism; perlin noise is particularly nice since it will
-		// darken/lighten the grass in patches for a much more convincing effect
+		// assign a random brightness value to the blade for extra realism
 		per = (1.0 + fakePerlinNoise(randomPos.x, randomPos.z)) / 2.0;
 		*brightnessValuePtr++ = MIN_BRIGHTNESS + (BRIGHTNESS_RANGE * per);
 
@@ -227,7 +224,7 @@ void GrassManager::updateLoop()
 	bool shifted = false;		// has the current blade of grass moved?
 	int i;
 
-	// we're in a different thread; this can run in an infinite loop until the game quits
+	// Run in an infinite loop until the game quits
 	while(!shutdown)
 	{
 		// no need to do any of this if the player isn't moving
@@ -290,44 +287,37 @@ void GrassManager::update(float dt)
 
 void GrassManager::render(mat4 &projection, mat4 &view, mat4 &model)
 {
-	const int NUM_BLADES_PER_UPDATE = 2000;		// this should be low enough that there's not too much data to send to the GPU, but
-												// high enough that we don't have the blades struggling to catch up with the player
+	const int NUM_BLADES_PER_UPDATE = 2000;		// Low enough that there's not too much data to send to the GPU, but
+												// High enough that so we don't have the blades struggling to catch up with the player
 	const int RESET_POINTER_STEPS = maxBlades / NUM_BLADES_PER_UPDATE;
 
 	shader -> bind();
 	shader -> uniformMatrix4fv("u_Projection", 1, value_ptr(projection));
 	shader -> uniformMatrix4fv("u_View", 1, value_ptr(view));
 
-	// only update a small chunk of the grass items; if we've picked an appropriate value of NUM_BLADES_PER_UPDATE, we shouldn't
-	// notice that we're only cycling through a small amount per update step; also, we should probably be using mutexes here
-	// but I'm not going to bother, since the grass is pretty non-critical and I don't want to use locking for performance reasons
+	// Only update a small chunk of the grass items; Picked an appropriate value of NUM_BLADES_PER_UPDATE
 	glBindVertexArray(vao);
 
-	// update the positions of the grass; the way we've structured our vertex attributes, we only need to send the position vector,
-	// as opposed to the entire 4x4 matrix for each blade of grass---this results in a lot of performance savings
+	// Update the positions of the grass; we only need to send the position vector
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[4]);
 	glBufferSubData(GL_ARRAY_BUFFER,
 					(sizeof(vec4) * maxBlades * 3) + (sizeof(vec4) * updateChunkIndex * NUM_BLADES_PER_UPDATE),
 					sizeof(vec4) * NUM_BLADES_PER_UPDATE,
 					modelMatUpdateChunk);
 
-	// update the shadow intensities of the grass
+	// Update the shadow intensities of the grass
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[3]);
 	glBufferSubData(GL_ARRAY_BUFFER,
 					(sizeof(float) * updateChunkIndex * NUM_BLADES_PER_UPDATE),
 					sizeof(float) * NUM_BLADES_PER_UPDATE,
 					shadowValuesUpdateChunk);
 
-	// prepare to update the next chunk on the next time around
+	// Prepare to update the next chunk on the next time around
 	modelMatUpdateChunk += NUM_BLADES_PER_UPDATE;
 	shadowValuesUpdateChunk += NUM_BLADES_PER_UPDATE;
 	updateChunkIndex ++;
 
-	// note: another possible optimization to grass handling would be to divide it into patches of grass, and only update patches
-	// based on their position relative to the player; this would require a fairly-major restructuring of how the grass manager
-	// works and might be tricky to implement from an OpenGL perspective...I'll give this some more thought
-
-	// wrap back around to the first chunk if we need to
+	// Wrap back around to the first chunk if we need to
 	if(updateChunkIndex >= RESET_POINTER_STEPS)
 	{
 		modelMatUpdateChunk = &modelMats[maxBlades * 3];
@@ -335,7 +325,7 @@ void GrassManager::render(mat4 &projection, mat4 &view, mat4 &model)
 		updateChunkIndex = 0;
 	}
 
-	// finally, draw the grass
+	// Finally, draw the grass
 	glEnable(GL_BLEND);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 3, maxBlades);
 	glDisable(GL_BLEND);

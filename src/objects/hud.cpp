@@ -11,7 +11,7 @@
 #include "glm/gtc/random.hpp"
 using namespace glm;
 
-const int HUD::NUM_BLOOD_SPLATTERS = 10;
+const int HUD::NUM_BLOOD_SPLATTERS = 5;
 
 HUD::HUD(Player *player, mat4 &orthoProjection, mat4 &orthoView, vec2 windowSize)
 {

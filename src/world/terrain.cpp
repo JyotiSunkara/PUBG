@@ -64,7 +64,7 @@ void Terrain::setupVBOs(int width, int length, float squareSize, float *heights)
 	memcpy(terrainHeights, heights, sizeof(float) * width * length);
 	terrainHeightPtr = terrainHeights;
 
-	// smooth out out terrain a bit since 256 greyscale values doesn't really cut it...
+	// smooth out out terrain a bit since 256 greyscale values not good
 	for(i = 0; i < width; i ++)
 	{
 		for(j = 0; j < width; j ++)

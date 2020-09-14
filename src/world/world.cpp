@@ -156,9 +156,7 @@ void World::createWorld(string worldFile)
 	// construct our terrain object now that we know the heights of every single vertex
 	terrain = new Terrain(this, width, length, TERRAIN_TILE_SIZE, heights);
 
-	// now insert the trees we recorded---there's probably a more graceful way of doing this without iterating through
-	// each tree twice, and I'll probably optimize later (this is not the bottleneck when loading, however, so it's not
-	// terribly important right now)
+	// now insert the trees we recorded
 	trees = new TreeManager(this, treeList.size());
 	for(v = treeList.begin(); v != treeList.end(); v ++)
 	{
@@ -301,14 +299,13 @@ void World::render()
 	vec3 cameraUp = player -> getCameraUp();
 	vec3 playerPos = player -> getPos();
 
-	// A whole lotta rendering here
+	// A whole bunch of rendering here
 	sky -> render(perspectiveProjection, perspectiveView, playerPos);
 	terrain -> render(perspectiveProjection, perspectiveView, modelMat);
 	trees -> render(perspectiveProjection, perspectiveView, modelMat);
 	grass -> render(perspectiveProjection, perspectiveView, modelMat);
 	player -> renderGun(perspectiveProjection, perspectiveView);
 	player -> renderArgon(perspectiveProjection, perspectiveView);
-
 	sign -> render(perspectiveProjection, perspectiveView);
 	drones -> render(perspectiveProjection, perspectiveView);
 	particles -> render(perspectiveProjection, perspectiveView, cameraSide, cameraUp);

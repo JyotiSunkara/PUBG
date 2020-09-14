@@ -92,8 +92,7 @@ Player::Player(GLFWwindow *window, World* world, vec3 pos) {
     glfwGetCursorPos(window, &oldMouseX, &oldMouseY);
 }
 
-Player::~Player()
-{
+Player::~Player() {
 	glDeleteBuffers(3, vbosGun);
 	glDeleteVertexArrays(1, &vaoGun);
 	delete shader;
@@ -371,6 +370,12 @@ void Player::controlMovingAndFiring(float dt)
 	{
 		jumpTimer = JUMP_ACCEL_TIME;
 	}
+
+	// F will toggle Fog
+	if(glfwGetKey(window, 'F') == GLFW_PRESS)
+	{
+		;
+	}	
 
 	// left mouse button will fire the gun
 	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && gunReloadState == STATE_LOADED)
@@ -650,11 +655,11 @@ void Player::die()
 	// are we currently alive?
 	if(alive)
 	{
-		// record ourselves as dead and start the "oof" impact animation
+		// Slow fade animation
 		alive = false;
 		deathImpactTimer = 0.0;
 
-		// play death sound
+		// Death sound
 		soundManager -> playSound(deathSound);
 	}
 }

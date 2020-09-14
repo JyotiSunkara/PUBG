@@ -28,16 +28,14 @@ private:
 
 	Shader *shader;								// shadow program we use when rendering the grass
 
-	// wrapping all the grass positions around the player is costly, so we do it in another thread;
-	// another approach would be to wrap "patches" of grass around the player instead of individual
-	// blades, so in the future I may implement that instead
+	// wrapping all the grass positions around the player is costly, so we do it in another thread
 	pthread_t updateThread;
 	bool shutdown;
 
 	GLuint vao;									// GL rendering state
 	GLuint vbos[5];								// vertex positions, colours, brightness values, shadow values, model matrices
 
-	static void *invokeWrapLoop(void *arg);		// expects "arg" to be the GrassManager, and starts the loop that winds the grass
+	static void *invokeWrapLoop(void *arg);		// arg is expected to be the GrassManager, and starts the loop that winds the grass
 
 	void updateLoop();							// loop for wrapping grass that runs in another thread
 
