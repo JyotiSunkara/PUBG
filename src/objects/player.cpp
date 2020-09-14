@@ -374,12 +374,10 @@ void Player::controlMovingAndFiring(float dt)
 
 	// F will toggle Fog
 	if(glfwGetKey(window, 'F') == GLFW_PRESS)
-	{
-		
+	{		
 		if (!fogFlag) {
 			
 			fogFlag = true;
-			cout << "Fog On! \n";
 
 		} 
 	}	

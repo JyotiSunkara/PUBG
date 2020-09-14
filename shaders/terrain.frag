@@ -11,10 +11,13 @@ uniform float u_Region2Max;
 uniform float u_Region2Range;
 uniform float u_Region3Max;
 uniform float u_Region3Range;
+uniform vec3 fogColor;
+uniform bool fogFlag;
 
 in vec2 v_BaseTexCoord;
 in vec4 v_Color;
 in float v_Height;
+in float visibility;
 
 out vec4 f_FragColor;
 
@@ -31,4 +34,7 @@ void main()
 	vec4 region3Color = (texture(u_Region3Tex, v_BaseTexCoord / 128.0) * 0.75) * region3Contrib + (texture(u_Region3Tex, v_BaseTexCoord / 512.0) * 0.25) * region3Contrib;
 
 	f_FragColor = ((region1Color + region2Color + region3Color) * v_Color) * vec4(shadow, shadow, shadow, 0.0);
+	if(fogFlag) {
+		f_FragColor = mix(vec4(fogColor, 1.0), f_FragColor, visibility);
+	}
 }

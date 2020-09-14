@@ -42,8 +42,6 @@ using namespace glm;
 #include <vector>
 using namespace std;
 
-extern bool fogFlag;
-
 const vec3 World::SUN_DIRECTION(normalize(vec3(0.288, 1.2, 2.2)));			// where the sun comes from
 
 const float World::BULLET_RANGE = 500.0;									// how far a bullet should fire
@@ -295,18 +293,6 @@ void World::update(float dt)
 
 void World::render()
 {
-	if(fogFlag) {
-		// cout << fogFlag << "\n";
-		GLfloat density = 0.5; //set the density to 0.3 which is acctually quite thick
-		GLfloat fogColor[4] = {0.5, 0.5, 0.5, 1.0}; //set the for color to grey
-		glEnable (GL_FOG); //enable the fog
-		glFogi (GL_FOG_MODE, GL_EXP2); //set the fog mode to exponential drop off
-		glFogfv (GL_FOG_COLOR, fogColor); //set the fog color to our color chosen above
-		glFogf (GL_FOG_DENSITY, density); //set the density to the value above
-		glHint (GL_FOG_HINT, GL_NICEST); // set the fog to look the nicest
-	} else {
-		glDisable(GL_FOG);
-	}
 	mat4 modelMat = mat4(1.0);
 	vec3 cameraSide = player -> getCameraSide();
 	vec3 cameraUp = player -> getCameraUp();

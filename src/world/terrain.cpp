@@ -1,6 +1,9 @@
 #include "world/terrain.h"
 #include "world/world.h"
 
+#include "objects/player.h"
+extern bool fogFlag;
+
 #include "util/shader.h"
 #include "util/loadtexture.h"
 
@@ -210,7 +213,9 @@ void Terrain::loadShader()
 	shader -> uniform1f("u_Region2Range", REGION_2_MAX - REGION_2_MIN);
 	shader -> uniform1f("u_Region3Max", REGION_3_MAX);
 	shader -> uniform1f("u_Region3Range", REGION_3_MAX - REGION_3_MIN);
-
+	shader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	shader -> uniform1i("fogFlag", fogFlag);
+	
 	shader -> uniformVec3("u_Sun", World::SUN_DIRECTION);
 	shader -> unbind();
 }

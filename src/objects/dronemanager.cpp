@@ -149,9 +149,7 @@ void DroneManager::loadTextures()
 
 void DroneManager::loadShader()
 {
-	// note to self: the drone lighting is probably not correct (in terms of orientation) due
-	// to the fact that we don't pass in the normal matrix in a per-instance manner like we
-	// should (see DroneManager::render() for more on this)
+	// Dronemanager::render takes care of lighting
 	bodyShader = new Shader("../shaders/solid-instanced.vert", "../shaders/solid.frag");
 	bodyShader -> bindAttrib("a_Vertex", 0);
 	bodyShader -> bindAttrib("a_Normal", 1);
