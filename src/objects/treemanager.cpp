@@ -1,6 +1,8 @@
 #include "objects/treemanager.h"
 #include "objects/tree.h"
 #include "objects/complexcollider.h"
+#include "objects/player.h"
+extern bool fogFlag;
 
 #include "world/world.h"
 
@@ -107,6 +109,8 @@ void TreeManager::loadShaders()
 	treeShader -> uniform1i("u_NormalMap", 1);
 	treeShader -> uniform1f("u_NormalMapStrength", 2.0);
 	treeShader -> uniformVec3("u_Sun", World::SUN_DIRECTION);
+	treeShader -> uniformVec3("fogColor", vec3(0.5, 0.5, 0.5));
+	treeShader -> uniform1i("fogFlag", fogFlag);
 	treeShader -> unbind();
 }
 

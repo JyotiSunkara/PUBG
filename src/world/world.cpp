@@ -304,16 +304,18 @@ void World::render()
 
 	// Call shaders when needed to enable or diable fog 
 	if(fogFlag && notEntered) {
-		terrain->loadShader();
-		sky->loadShader();
-		drones->loadShader();
+		terrain -> loadShader();
+		sky -> loadShader();
+		drones -> loadShader();
+		trees -> loadShaders();
 		notEntered = false;
 	}
 
 	if(!fogFlag && !notEntered) {
-		terrain->loadShader();
-		sky->loadShader();
-		drones->loadShader();
+		terrain -> loadShader();
+		sky -> loadShader();
+		drones -> loadShader();
+		trees -> loadShaders();
 		notEntered = true;
 	}
 

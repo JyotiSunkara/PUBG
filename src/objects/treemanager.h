@@ -39,7 +39,6 @@ private:
 	// load up our resources, pretty self-explanatory
 	void loadTree();
 	void loadTextures();
-	void loadShaders();
 
 public:
 	// technically, in this case, there's no reason we can't just use a std::vector or something rather than specifying a silly
@@ -49,6 +48,7 @@ public:
 
 	Tree *addTree(glm::vec3 pos);			// we cannot exceed maxTrees when adding trees, otherwise we get in trouble
 	void finalizeTreePlacement();			// called to send data to GPU, when we've called addTree() enough and won't need to call it ever again
+	void loadShaders();
 
 	// render the trees and their leaves
 	void render(glm::mat4 &projection, glm::mat4 &view, glm::mat4 &model);
