@@ -1,7 +1,4 @@
 #include "world/world.h"
-#include "objects/player.h"
-
-extern bool fogFlag;
 
 #include "util/gldebugging.h"
 #include "util/planerenderer.h"
@@ -82,8 +79,7 @@ int main(int args, char *argv[])
 		frameTime += dt;
 
 		// is it time to update the scene and render a new frame?
-		if(renderAccum >= TARGET_FRAME_INTERVAL)
-		{
+		if(renderAccum >= TARGET_FRAME_INTERVAL) {
 			// clear our colour and depth buffers
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -93,19 +89,6 @@ int main(int args, char *argv[])
 			// use our previous frame time to compute a smoother frame time for this update cycle
 			smoothFrameTime = (smoothFrameTime * FRAME_TIME_ALPHA) + (frameTime * (1.0 - FRAME_TIME_ALPHA));
 			frameTime = 0.0;
-
-			if(fogFlag) {
-				// cout << fogFlag << "\n";
-				GLfloat density = 0.5; //set the density to 0.3 which is acctually quite thick
-				GLfloat fogColor[4] = {0.5, 0.5, 0.5, 1.0}; //set the for color to grey
-				glEnable (GL_FOG); //enable the fog
-				glFogi (GL_FOG_MODE, GL_EXP2); //set the fog mode to exponential drop off
-				glFogfv (GL_FOG_COLOR, fogColor); //set the fog color to our color chosen above
-				glFogf (GL_FOG_DENSITY, density); //set the density to the value above
-				// glHint (GL_FOG_HINT, GL_NICEST); // set the fog to look the nicest
-			} else {
-				glDisable(GL_FOG);
-			}
 
 			// update the world state and render everything
 			world -> update(smoothFrameTime);

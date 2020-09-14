@@ -14,8 +14,6 @@ out vec3 v_Normal;
 
 void main()
 {
-	//vec4 worldPos = a_InstanceMatrix * vec4(a_Vertex, 1.0);
-
 	v_VertexPos = u_View * a_InstanceMatrix * vec4(a_Vertex, 1.0);;
 	v_TexCoord = a_TexCoord;
 	v_Normal = a_Normal;

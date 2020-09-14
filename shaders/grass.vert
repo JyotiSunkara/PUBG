@@ -20,20 +20,12 @@ void main()
 {
 	mat4 modelview = u_View * a_InstanceMatrix;
 
-	// extract our scale vectors so we can keep them (we don't need Z because we don't zero out the 2nd modelview column,
-	// since this is a cylindrical billboard, not a spherical one)
-	// http://stackoverflow.com/questions/15937842/glsl-billboard-shader-keep-the-scaling
-	//vec3 scaleX = modelview[0].xyz;
-	//vec3 scaleY = modelview[1].xyz;
-
 	// zero out out first column for a cylindrical billboard
-	//modelview[0][0] = 0;//length(scaleX);
 	modelview[0][1] = 0;
 	modelview[0][2] = 0;
 
 	// zero out our second column for a cylindrical billboard
 	modelview[1][0] = 0;
-	//modelview[1][1] = 0;//length(scaleY);
 	modelview[1][2] = 0;
 
 	// compute a wave amount that is dependent on our position and the height of the current vertex
