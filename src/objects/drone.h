@@ -27,15 +27,15 @@ private:
 	glm::vec3 velocity;									// velocity of the drone in m/s
 	glm::vec3 impactMotion;								// separate velocity used to control the impact effect of getting shot by the player
 
-	float distanceToPlayer;								// computed every frame (we should use temporal partitioning here since we don't need this constantly)
-	bool playedWarning;									// have we played the warning buzz yet? used to ensure we don't continually play it
+	float distanceToPlayer;								// computed every frame 
+	bool playedWarning;									// have we played the warning buzz yet?
 
 	float health;										// current hit points of drone
 	bool alive;											// is the drone at >0 hit points?
 
 	void moveTowardsPlayer(float dt);					// simple motion towards player
 	void controlImpactMotion(float dt);					// simple impact effect after getting shot
-	void controlGroundIntersection();					// prevents intersection with terrain (temporal partitioning would be useful here, too)
+	void controlGroundIntersection();					// prevents intersection with terrain 
     void controlWarningSound();							// plays warning sound when player is dangerously close
     void controlHoverSound();							// loops hover sound when player is close enough to hear it
     void controlDeath();								// controls death detection
@@ -49,10 +49,10 @@ public:
 	Drone(World *world, glm::vec3 pos, ALuint hoverBuffer, ALuint warningBuffer, ALuint explodeBuffer);
 	~Drone();
 
-	// updating is done individually, but drones are rendered in batches via DroneManager::render();
+	// updating is done individually, but drones are rendered in batches at DroneManager::render();
 	void update(float dt);
 
-	// true iff health > 0
+	// true if health > 0
 	bool getAlive();
 
 	// called if a collision with a bullet is detected

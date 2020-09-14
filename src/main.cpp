@@ -1,4 +1,7 @@
 #include "world/world.h"
+#include "objects/player.h"
+
+extern bool fogFlag;
 
 #include "util/gldebugging.h"
 #include "util/planerenderer.h"
@@ -91,6 +94,19 @@ int main(int args, char *argv[])
 			smoothFrameTime = (smoothFrameTime * FRAME_TIME_ALPHA) + (frameTime * (1.0 - FRAME_TIME_ALPHA));
 			frameTime = 0.0;
 
+			if(fogFlag) {
+				// cout << fogFlag << "\n";
+				GLfloat density = 0.5; //set the density to 0.3 which is acctually quite thick
+				GLfloat fogColor[4] = {0.5, 0.5, 0.5, 1.0}; //set the for color to grey
+				glEnable (GL_FOG); //enable the fog
+				glFogi (GL_FOG_MODE, GL_EXP2); //set the fog mode to exponential drop off
+				glFogfv (GL_FOG_COLOR, fogColor); //set the fog color to our color chosen above
+				glFogf (GL_FOG_DENSITY, density); //set the density to the value above
+				// glHint (GL_FOG_HINT, GL_NICEST); // set the fog to look the nicest
+			} else {
+				glDisable(GL_FOG);
+			}
+
 			// update the world state and render everything
 			world -> update(smoothFrameTime);
 			world -> render();
@@ -114,7 +130,7 @@ int main(int args, char *argv[])
 
 void openWindow()
 {
-	const char *TITLE = "No-Fly Zone";
+	const char *TITLE = "Argon And Jölnir Versus The Drones";
 
 	int windowWidth;
 	int windowHeight;
@@ -144,11 +160,7 @@ void openWindow()
 	// create our OpenGL window using GLFW
     window = glfwCreateWindow(windowWidth, windowHeight,		// specify width and height
 							  TITLE,							// title of window
-							  #ifdef DEBUG
-								NULL,							// windowed mode
-							  #else
-								glfwGetPrimaryMonitor(),		// fullscreen mode
-							  #endif
+							  glfwGetPrimaryMonitor(),		// fullscreen mode
 							  NULL);							// not sharing resources across monitors
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);

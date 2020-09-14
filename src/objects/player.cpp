@@ -28,7 +28,7 @@ using namespace glm;
 #include <string>
 using namespace std;
 
-const float Player::PLAYER_HEIGHT = 3;					// how high the camera is off the ground
+const float Player::PLAYER_HEIGHT = 2;					// how high the camera is off the ground
 
 const int Player::MAX_ROUNDS_PER_CLIP = 30;				// how many bullets can we fire before reloading?
 
@@ -36,6 +36,7 @@ const float Player::GUN_RECOIL_ANIM_TIME = 0.25;		// length of the gun recoil an
 const float Player::DEATH_IMPACT_ANIM_TIME = 0.5;		// length of the player impact animation in seconds
 
 const float Player::MAX_LOOK_PITCH = M_PI_2 - 0.2;		// min and max pitch angle for the camera in radians
+bool fogFlag = false;
 
 Player::Player(GLFWwindow *window, World* world, vec3 pos) {
 	this -> window = window;
@@ -78,10 +79,10 @@ Player::Player(GLFWwindow *window, World* world, vec3 pos) {
 	gunReloadTimer = 0.0;
 	gunReloadOffsetAmount = 0.0;
 
-	// player isn't dead...yet
+	// player isn't dead yet
 	alive = true;
 
-	// load our assets...this is mainly just the gun
+	// load our assets Gun and Argon
     loadGun();
     loadTextures();
     loadShader();
@@ -374,15 +375,23 @@ void Player::controlMovingAndFiring(float dt)
 	// F will toggle Fog
 	if(glfwGetKey(window, 'F') == GLFW_PRESS)
 	{
-		glEnable(GL_FOG);
-		glFogi(GL_FOG_MODE, GL_LINEAR);
-		glFogf(GL_FOG_START,1.);
-		glFogf(GL_FOG_END,5.);
-	//  glFogi(GL_FOG_MODE, GL_EXP2);
-	//  glFogf(GL_FOG_DENSITY, .3);
-		float color[] = {.5,.5,.5,1.};
-		glFogfv(GL_FOG_COLOR, color);
+		
+		if (!fogFlag) {
+			
+			fogFlag = true;
+			cout << "Fog On! \n";
+
+		} 
 	}	
+
+
+	if(glfwGetKey(window, 'C') == GLFW_PRESS) {
+		
+		if(fogFlag) {
+			cout << "Fog Off! \n";
+			fogFlag = false;
+		}
+	}
 
 	// left mouse button will fire the gun
 	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && gunReloadState == STATE_LOADED)

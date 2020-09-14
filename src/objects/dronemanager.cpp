@@ -171,7 +171,7 @@ void DroneManager::loadShader()
 	bodyShader -> uniform1f("u_NormalMapStrength", 2.0);
 	bodyShader -> unbind();
 
-	// a simpler shader can be used for the drone blades
+	// shader for the drone blades
 	bladesShader = new Shader("../shaders/solid-instanced.vert", "../shaders/plane.frag");
 	bladesShader -> bindAttrib("a_Vertex", 0);
 	bladesShader -> bindAttrib("a_Normal", 1);

@@ -29,7 +29,14 @@ As soon as the game begins Argon is free to move in the world surrounded by moun
 - World
 - Shooter
 - Fog
-- Health, Drone Count, Bullet Count Board
+- Heads Up Display
+
+    Health
+
+    Drone Count
+
+    Bullet Count 
+
 
 ## Special Features 
 
@@ -38,15 +45,32 @@ As soon as the game begins Argon is free to move in the world surrounded by moun
 - Reload
 - Shooting Spark
 - Waving Grass
-- Fire Smoke On Destruction
-- Splatter And Spray
+- Fire Smoke
+- Spray
 - Reticle
-- Sound
+- Sounds
+
+    Drone Warning 
+
+    Nature
+
+    Shot
+
+    Hit
+
+    Explode
+
+    Splatter
+
+- Blood Splatter
 
 ## Code
 
 ### Third Party
-### LodePNG
-### Claudette
+    All the libraries and headers installed and used in this game have been added here for convinience.
+
+    ### LodePNG
+    ### Claudette
+    
 ### Meshes
 ### Directories 

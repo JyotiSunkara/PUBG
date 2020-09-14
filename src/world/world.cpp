@@ -158,8 +158,7 @@ void World::createWorld(string worldFile)
 
 	// now insert the trees we recorded
 	trees = new TreeManager(this, treeList.size());
-	for(v = treeList.begin(); v != treeList.end(); v ++)
-	{
+	for(v = treeList.begin(); v != treeList.end(); v ++) {
 		v -> y = getTerrainHeight(*v);
 		addTree(*v);
 	}
