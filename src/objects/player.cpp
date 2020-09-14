@@ -374,7 +374,14 @@ void Player::controlMovingAndFiring(float dt)
 	// F will toggle Fog
 	if(glfwGetKey(window, 'F') == GLFW_PRESS)
 	{
-		;
+		glEnable(GL_FOG);
+		glFogi(GL_FOG_MODE, GL_LINEAR);
+		glFogf(GL_FOG_START,1.);
+		glFogf(GL_FOG_END,5.);
+	//  glFogi(GL_FOG_MODE, GL_EXP2);
+	//  glFogf(GL_FOG_DENSITY, .3);
+		float color[] = {.5,.5,.5,1.};
+		glFogfv(GL_FOG_COLOR, color);
 	}	
 
 	// left mouse button will fire the gun
