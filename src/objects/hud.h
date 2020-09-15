@@ -23,7 +23,7 @@ private:
 	GLuint bloodTexture;
 	GLuint blackTexture;
 
-	bool bloodEnabled;									// show the splatters?
+	bool bloodEnabled;									// show the splatters? Or no?
 	glm::mat4 *bloodSplatters;							// pre-computed, randomized model matrices for the splatters
 
 	float fade;											// strength of black fade plane (0 is transparent, 1 is opaque)
@@ -37,6 +37,7 @@ private:
 	void renderAmmo();
 	void renderBlood();
 	void renderFade();
+	void renderDashboard();
 
 public:
 	HUD(Player *player, glm::mat4 &orthoProjection, glm::mat4 &orthoView, glm::vec2 windowSize);

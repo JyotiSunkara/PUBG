@@ -5,7 +5,7 @@
 #include "GL/glew.h"
 #include "glm/glm.hpp"
 
-// Shader wrapper class inspired by that in Luke Benstead's "Beginning OpenGL Game Programming, 2nd Edition"
+// Shader wrapper class 
 class Shader
 {
 private:

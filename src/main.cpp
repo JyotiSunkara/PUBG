@@ -55,8 +55,7 @@ int main(int args, char *argv[])
 	openWindow();
 	prepareOpenGL();
 
-	// render a quick-and-dirty loading screen while everything is loaded and built;
-	// this will be cleared the next time the buffers are swapped
+	// Quick-and-dirty loading screen while everything is loaded and built this will be cleared the next time the buffers are swapped
 	showLoadingScreen();
 
 	// construct our world using a PNG image that describes how it is built
@@ -69,6 +68,9 @@ int main(int args, char *argv[])
 	// loop until we're done
 	while(!glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) && !world -> isGameDone())
 	{
+		
+		
+		
 		// compute a time multiplier based on our frame rate
 		oldTime = currentTime;
 		currentTime = glfwGetTime();
