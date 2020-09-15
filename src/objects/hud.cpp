@@ -19,10 +19,26 @@ const int HUD::NUM_BLOOD_SPLATTERS = 5;
 
 HUD::HUD(Player *player, mat4 &orthoProjection, mat4 &orthoView, vec2 windowSize) {
 
+	// Initialize the library
 	FT_Library  ft;
-	
 	if(FT_Init_FreeType(&ft)) {
 		fprintf(stderr, "Could not init freetype library\n");
+		return;
+	}
+
+	// Load font face
+	FT_Face face;
+	if(FT_New_Face(ft, "/usr/share/fonts/truetype/lato/Lato-Regular.ttf", 0, &face)) {
+		fprintf(stderr, "Could not open font\n");
+		return;
+	}
+
+	// Font size 
+	FT_Set_Pixel_Sizes(face, 0, 48);
+	
+	// Load a character
+	if(FT_Load_Char(face, 'X', FT_LOAD_RENDER)) {
+		fprintf(stderr, "Could not load character 'X'\n");
 		return;
 	}
 
