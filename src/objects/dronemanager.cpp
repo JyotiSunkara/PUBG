@@ -3,6 +3,7 @@
 #include "objects/complexcollider.h"
 #include "objects/player.h"
 extern bool fogFlag;
+#include "objects/hud.h"
 
 #include "util/shader.h"
 #include "util/loadtexture.h"
@@ -27,8 +28,9 @@ using namespace glm;
 #include <iostream>
 using namespace std;
 
-DroneManager::DroneManager(World *world, int maxDrones)
-{
+int hudDrones;
+
+DroneManager::DroneManager(World *world, int maxDrones) {
 	this -> world = world;
 	this -> maxDrones = maxDrones;
 	numDrones = 0;
@@ -44,8 +46,7 @@ DroneManager::DroneManager(World *world, int maxDrones)
 	loadSounds();
 }
 
-DroneManager::~DroneManager()
-{
+DroneManager::~DroneManager() {
 	glmDelete(droneColliderModel);
 	glmDelete(droneBladeModel);
 	glmDelete(droneBodyModel);
@@ -62,8 +63,7 @@ DroneManager::~DroneManager()
 	delete[] modelMats;
 }
 
-void DroneManager::initTemporalPartitioning()
-{
+void DroneManager::initTemporalPartitioning() {
 	int i;
 	cylinderTestTimers = new float[maxDrones];
 	for(i = 0; i < maxDrones; i ++)
@@ -72,8 +72,7 @@ void DroneManager::initTemporalPartitioning()
 	}
 }
 
-void DroneManager::loadModels()
-{
+void DroneManager::loadModels() {
 	// attempt to read the body file; glmReadObj() will just quit if we can't
     droneBodyModel = glmReadOBJ((char*)"../mesh/drone-body.obj");
     if(droneBodyModel)
@@ -195,21 +194,17 @@ void DroneManager::loadSounds()
 	explodeSound = SoundManager::getInstance() -> loadWAV("../wav/drone-explode.wav");		// drone explosion sound when player shoots and kills it
 }
 
-Drone *DroneManager::addDrone(vec3 pos)
-{
+Drone *DroneManager::addDrone(vec3 pos) {
 	Drone *result = NULL;
 
-	if(numDrones < maxDrones)
-	{
+	if(numDrones < maxDrones) {
 		drones[numDrones] = Drone(world, pos, hoverSound, warningSound, explodeSound);
 		result = &drones[numDrones];
 
 		result -> setComplexCollider(new ComplexCollider(droneColliderModel));
 
 		numDrones ++;
-	}
-	else
-	{
+	} else {
 		cerr << "DroneManager::addDrone() cannot add a drone because the maximum of " << maxDrones << " has been reached" << endl;
 		exit(1);
 	}
@@ -293,15 +288,14 @@ void DroneManager::update(float dt)
 	glBindVertexArray(bladesVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, bladesVBOs[3]);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(mat4) * numDrones, modelMats);
+	hudDrones = numDronesAlive;
 }
 
-void DroneManager::render(mat4 &projection, mat4 &view)
-{
+void DroneManager::render(mat4 &projection, mat4 &view) {	
 	// compute our normal matrix for lighting
 	mat4 modelMatrix(1.0);
 	mat3 normal = inverseTranspose(mat3(modelMatrix));		// this does actually do anything, and should be passed in per
-															// instance, not per rendering call; I may address this later
-															// since the lighting bug this causes isn't really noticeable
+															// instance, not per rendering call
 
 	// OpenGL rendering settings common to blades and body
 	glDisable(GL_CULL_FACE);

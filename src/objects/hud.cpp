@@ -1,5 +1,6 @@
 #include "objects/hud.h"
 #include "objects/player.h"
+#include "objects/dronemanager.h"
 
 #include "util/planerenderer.h"
 #include "util/loadtexture.h"
@@ -197,6 +198,18 @@ void HUD::render() {
 	}
 	renderFade();
 
+	char buffer[20];
+
+	RenderText("TIME", 20.0f, 20.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	RenderText("SCORE", 20.0f, 40.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	RenderText("BULLETS", 20.0f, 60.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "DRONES: %d", hudDrones);
+	RenderText(buffer, 20.0f, 80.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	RenderText("HEALTH", 20.0f, 100.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+
+
+
+
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -239,7 +252,6 @@ void HUD::renderAmmo() {
 		plane -> render();
 	}
 
-	RenderText("This is sample text", 2.0f, 2.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
 }
 
@@ -283,6 +295,7 @@ void HUD::setFade(float fade)  {
 }
 
 void HUD::RenderText(std::string text, float x, float y, float scale, glm::vec3 color) {
+
     // Activate corresponding render state	
     textShader -> bind();
 	textShader -> uniformVec3("textColor", color);

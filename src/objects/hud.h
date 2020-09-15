@@ -9,8 +9,13 @@ class Shader;
 class Player;
 class PlaneRenderer;
 
-class HUD
-{
+extern int hudDrones;
+extern int hudScore;
+extern int hudBullets;
+extern int hudHealth;
+extern int hudTime;
+
+class HUD {
 private:
 	static const int NUM_BLOOD_SPLATTERS;				// how many splatter instances we want when the player dies
 
