@@ -140,14 +140,15 @@ public:
 	void renderArgon(glm::mat4 &projection, glm::mat4 &view);
 
 	// these are called externally by the game world, although they probably don't
-	// need to be, strictly speaking...
 	void computeCameraOrientation();
 	void computeGunPosition();
 	void computeArgonPosition();
 
 	// some simple getters/setters //
 
-	glm::vec3 getPos();						// used for grass positioning, among other things
+	glm::vec3 getPos();						// used for grass positioning and drone generation
+	glm::vec3 getArgonPos();				// used for drone collision
+
 	void setPos(glm::vec3 pos);
 
 	glm::vec3 getCameraLook();				// used for a few shaders

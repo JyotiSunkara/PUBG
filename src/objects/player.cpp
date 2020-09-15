@@ -1,6 +1,7 @@
 #include "objects/player.h"
 #include "objects/hud.h"
 int hudTime;
+extern int hudDrones;
 
 #include "world/world.h"
 
@@ -176,7 +177,10 @@ void Player::loadSounds()
 
 void Player::update(float dt)
 {
+	// Id time is up!
 	if(1000 - hudTime == 0) die();
+	// Check if drones done 
+	if (hudDrones == 0) die();
 
 	controlDeathImpact(dt);
 
@@ -646,6 +650,11 @@ void Player::computeWalkingVectors()
 vec3 Player::getPos()
 {
 	return pos;
+}
+
+vec3 Player::getArgonPos()
+{
+	return argonPos;
 }
 
 void Player::setPos(vec3 pos)

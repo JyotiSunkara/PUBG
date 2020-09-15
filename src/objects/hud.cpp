@@ -200,18 +200,18 @@ void HUD::render() {
 
 	char buffer[20];
 
-	snprintf(buffer, 20, "TIME: %d", 1000 - hudTime);
-	RenderText(buffer, 20.0f, 20.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
-	snprintf(buffer, 20, "SCORE: %d", hudScore);
-	RenderText(buffer, 20.0f, 40.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "TIME  %d", 1000 - hudTime);
+	RenderText(buffer, 30.0f, 700.0f, 0.7f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "SCORE  %d", hudScore);
+	RenderText(buffer, 30.0f, 660.0f, 0.7f, glm::vec3(0.5, 0.8f, 0.2f));
 	int numShotsInClip = player -> getNumShotsInClip();
-	snprintf(buffer, 20, "BULLETS: %d", numShotsInClip);
-	RenderText(buffer, 20.0f, 60.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
-	snprintf(buffer, 20, "DRONES: %d", hudDrones);
-	RenderText(buffer, 20.0f, 80.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "BULLETS  %d", numShotsInClip);
+	RenderText(buffer, 1100.0f, 660.0f, 0.7f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "DRONES  %d", hudDrones);
+	RenderText(buffer, 1100.0f, 620.0f, 0.7f, glm::vec3(0.5, 0.8f, 0.2f));
 	int numReloads = player -> getNumReloads();
-	snprintf(buffer, 20, "HEALTH: %d", numReloads);
-	RenderText(buffer, 20.0f, 100.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "HEALTH  %d", numReloads);
+	RenderText(buffer, 1100.0f, 700.0f, 0.7f, glm::vec3(0.5, 0.8f, 0.2f));
 
 
 

@@ -167,7 +167,7 @@ void World::createWorld(string worldFile)
 	// Assign the shadow texture to the terrain
 	terrain -> setShadowTexture(shadows -> makeGLTexture());
 
-	// by the way, add some grass, too, while we're at it
+	// add some grass, too while we're at it
 	grass = new GrassManager(this, player, MAX_BLADES_OF_GRASS, GRASS_AREA_RADIUS);
 
 	// create the skydome
