@@ -31,6 +31,9 @@ Enable fog mode, where all distant objects are enveloped and obscured by a greyi
 ## **`C`**
 Clears the sky by getting rid of the foggy envelope, if present.
 
+## **`V R`**
+Either of these keys can be used to trigger the reloading of the gun manually. The reloading process is done automatically when the bullets of the round are emptied and Argon is still in good health! (Health > 0)
+
 ## **`Space Bar`**
 Hit the spacebar to make Argon take a tiny leap. This can be used in combination with movement to create bounding leaps across the terrain!
 
@@ -45,7 +48,26 @@ This is cause The Jölnir to fire a bullet at the point pointed at by the reticl
 
 ## Playing  
 ### Installation
+Most Linux distributions rely on the Mesa3D project to provide their OpenGL implementation. Hence, install  Mesa, Make and GCC/g++ first.
+
+```bash
+    > sudo apt-get install build-essential libgl1-mesa-dev
+```
+
+This projects makes great use of GLEW, GLM and FreeType. So next we install those development libraries.
+
+```bash
+    > sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
+```
 ### Running 
+To play the game by running the excecutable, do the following!
+```bash
+    > git clone 
+    > cd PUBG
+    > ./run.sh
+```
+
+This creates a build directory and copies the Makefile into it. The Makefile generates all the required `.o` files and stores them in an `obj` directory located in `build`. Then the excecutable is created and stored in the build directory. Finally, the excecutable is run!
 
 ## Features 
 - Grass
