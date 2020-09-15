@@ -3,6 +3,7 @@
 #include "GL/glew.h"
 #include "glm/glm.hpp"
 
+class Shader;
 class Player;
 class PlaneRenderer;
 
@@ -27,6 +28,8 @@ private:
 	glm::mat4 *bloodSplatters;							// pre-computed, randomized model matrices for the splatters
 
 	float fade;											// strength of black fade plane (0 is transparent, 1 is opaque)
+
+	Shader *textShader;	
 
 	// load up our resources
 	void loadTextures();
