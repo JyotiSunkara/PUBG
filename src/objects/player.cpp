@@ -31,6 +31,7 @@ using namespace std;
 const float Player::PLAYER_HEIGHT = 2;					// how high the camera is off the ground
 
 const int Player::MAX_ROUNDS_PER_CLIP = 30;				// how many bullets can we fire before reloading?
+const int Player::MAX_RELOADS = 5;
 
 const float Player::GUN_RECOIL_ANIM_TIME = 0.25;		// length of the gun recoil animation in seconds
 const float Player::DEATH_IMPACT_ANIM_TIME = 0.5;		// length of the player impact animation in seconds
@@ -71,8 +72,9 @@ Player::Player(GLFWwindow *window, World* world, vec3 pos) {
 	deathImpactTimer = DEATH_IMPACT_ANIM_TIME;
 	deathImpactAmount = 0.0;
 
-	// we start with a full clip
+	// we start with a full clip and full health
 	numShotsInClip = MAX_ROUNDS_PER_CLIP;
+	numReloads = MAX_RELOADS;
 
 	// gun is fully loaded
 	gunReloadState = STATE_LOADED;
@@ -409,10 +411,13 @@ void Player::controlMovingAndFiring(float dt)
 				world -> fireBullet(pos, bulletDir);
 				world -> addParticle(muzzleFlash, gunPos + pos + (cameraForward * 0.15f) + (cameraUp * 0.065f));
 			}
-			else
+			else if(numReloads > 0)
 			{
 				// otherwise, we reload automatically
 				gunReloadState = STATE_START_MOVING_DOWN;
+				numReloads --;
+			} else {
+				die();
 			}
 		}
 	}
@@ -425,7 +430,11 @@ void Player::controlMovingAndFiring(float dt)
 	if(((glfwGetKey(window, 'V') == GLFW_PRESS || glfwGetKey(window, 'R') == GLFW_PRESS) && gunReloadState == STATE_LOADED && numShotsInClip < MAX_ROUNDS_PER_CLIP) ||
 	   (numShotsInClip == 0 && gunRecoilFinished == true && gunReloadState == STATE_LOADED))
 	{
-		gunReloadState = STATE_START_MOVING_DOWN;
+		if(numReloads > 0) {
+				// otherwise, we reload automatically
+				gunReloadState = STATE_START_MOVING_DOWN;
+				numReloads --;
+		}
 	}
 
 	// if we're in the middle of a jump, then keep accelerating upwards
@@ -660,6 +669,12 @@ int Player::getNumShotsInClip()
 {
 	return numShotsInClip;
 }
+
+int Player::getNumReloads() 
+{
+	return numReloads;
+}
+
 
 void Player::die()
 {

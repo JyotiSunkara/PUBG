@@ -73,6 +73,7 @@ private:
 	float gunRecoilAmount;					// factor from 0 to 1 for how far we are into the recoil animation
 
 	int numShotsInClip;						// current number of bullets we have left before a reload is needed
+	int numReloads;							// current numbers of reloads left
 
 	ReloadState gunReloadState;				// current state of the gun reloading animation; see the ReloadState enum above
 	float gunReloadTimer;					// timer in seconds, used to control the reloading animation
@@ -126,6 +127,8 @@ public:
 	static const float PLAYER_HEIGHT;		// how high the camera is off the ground
 
 	static const int MAX_ROUNDS_PER_CLIP;	// how many bullets can we fire before reloading?
+	static const int MAX_RELOADS;	// how many bullets can we fire before reloading?
+
 
 	Player(GLFWwindow *window, World* world, glm::vec3 pos);
 	~Player();
@@ -153,6 +156,8 @@ public:
 
 	bool getIsMoving();						// for grass updating
 	int getNumShotsInClip();				// for HUD bullet count rendering
+	int getNumReloads();				// for HUD bullet reload rendering
+
 
 	void die();								// kills the player instantly; caused by drone hit
 	bool isAlive();							// pretty self-explanatory; true iff player has not been hit by drone
