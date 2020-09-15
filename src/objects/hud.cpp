@@ -18,22 +18,43 @@ const int HUD::NUM_BLOOD_SPLATTERS = 5;
 
 HUD::HUD(Player *player, mat4 &orthoProjection, mat4 &orthoView, vec2 windowSize) {
 
+	FT_Library ft;
+	if (FT_Init_FreeType(&ft))
+	{
+		fprintf(stderr, "FreeType: Could not init FreeType Library\n");
+		return;
+	}
+
+	FT_Face face;
+	if (FT_New_Face(ft, "/usr/share/fonts/truetype/lato/Lato-Bold.ttf", 0, &face))
+	{
+		fprintf(stderr, "FreeType: Failed to load font\n");
+		return;
+	}
+
+	FT_Set_Pixel_Sizes(face, 0, 48);  
+	if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
+	{
+		fprintf(stderr, "FreeType: Failed to load Glyph\n");
+		return;
+	}
+
 	this -> player = player;
 
-	// save our screen characteristics
+	// Save our screen characteristics
 	orthoSize = windowSize;
 	orthoCenter = orthoSize / 2.0f;
 
-	// we only need to send this once, so let's do it now
+	// We only need to send this once, so let's do it now
 	plane = PlaneRenderer::getInstance();
 	plane -> bindShader();
-	plane -> setProjectionMatrix(orthoProjection);				// projection mat never changes
-	plane -> setViewMatrix(orthoView);							// ortho mat never changes
+	plane -> setProjectionMatrix(orthoProjection);				// Projection mat never changes
+	plane -> setViewMatrix(orthoView);							// Ortho mat never changes
 
-	// turn off blood effect for now
+	// Turn off blood effect for now
 	enableBlood(false);
 
-	// load up any resources we need
+	// Load up any resources we need
 	loadTextures();
 	setupBlood();
 }
