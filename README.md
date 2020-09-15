@@ -8,17 +8,26 @@ An OpenGL implementation of a three-dimensional third-person-shooter open world 
 
 The name is derived from the Greek work *`argos`*, meaning idle. The main character in the game is a shiny steel Cyborg who is seemingly weaponless and defenseless much like the unreactive noble gas Argon. Argon The Cyborg however has impeccable mind control on all weaponry except modern drones. He has his personal powerful weapon in this game, the Jölnir which he can reload and fire as he wishes.
 
+<div style="text-align:center"><img src="images/Argon.png" 
+         alt="Argon"></div> 
+
 ## **`Jölnir`**
 
 Jölnir is the gun of Argon, the Cyborg associated with mind control. Jölnir is one of the most fearsome and powerful weapons in existence, capable of annihilating drones. It carries `20` bullets at once and can annihilate with a 500 metre range.
+
+<div style="text-align:center"><img src="images/gun.png" 
+         alt="Jolnir"></div> 
 
 ## **`Drones`**
 
 Drones are spawned in the world around Argon and as soon as they come into existense they take up the single minded goal of attacking Argon The Cyborg. They zoom towards Argon's position in the world and if a drone comes in contact with Argon, the game has been lost.
 
+<div style="text-align:center"><img src="images/drone.png" 
+         alt="Drone"></div> 
+
 ## **`Context`**
 
-As soon as the game begins Argon is free to move in the world surrounded by mountains using the controls. `50` drones are spawned in total at different points in time and space. If all `50` drones are annihilated by Argon, he wins the game. If any drone collides with Argon, the game is lost. Argon has a total of `5` health tokens which means he can refill the gun `5` times. Every refill of the gun gives Argon `30` bullets. The score is calculated based on how many drones Argon has annihilated, where `10` points are given for each annihilated drone! The time remaining is also displayed on the scree which means Argon must get rid of the drones as fast as possible. The remaining time is added to the final score and hence Argon must remain incentivised to finish the win the game as fast as possible!
+As soon as the game begins Argon is free to move in the world surrounded by mountains using the controls. `150` drones are spawned in total at different points in time and space. If all `150` drones are annihilated by Argon, he wins the game. If any drone collides with Argon, the game is lost. Argon has a total of `5` health tokens which means he can refill the gun `5` times either manually or automatically. Every refill of the gun gives Argon `30` bullets. The score is calculated based on how many drones Argon has annihilated, where `10` points are given for each annihilated drone! The time remaining is also displayed on the scree which means Argon must get rid of the drones as fast as possible. Argon is given `1000` seconds to complete the mission and hence must remain incentivised to win the game as fast as possible!
 
 ## Controls
 
@@ -70,7 +79,15 @@ To play the game by running the excecutable, do the following!
 This creates a build directory and copies the Makefile into it. The Makefile generates all the required `.o` files and stores them in an `obj` directory located in `build`. Then the excecutable is created and stored in the build directory. Finally, the excecutable is run!
 
 ## Features 
-- Grass
+### `Terrain` 
+
+The terrain is made of textured tiles simulating bumps and non-uniformity and is surrounded by mountains in all directions!
+
+### `Sky`
+The sky is a cloud textured dome placed on the top of the world to create a realistic appearance.
+
+### `Grass`
+Grass blades cover every part of the terrain.
 - Trees
 - World
 - Shooter
@@ -115,6 +132,8 @@ Ammonition count displayed around the reticle as teeny bullets!
     Splatter
 
 - Blood Splatter
+- Death Impact
+
 
 ## Code
 
