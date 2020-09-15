@@ -4,6 +4,9 @@
 #include "util/planerenderer.h"
 #include "util/loadtexture.h"
 
+#include "objects/hud.h"
+extern int hudTime;
+
 #include "GL/glew.h"
 
 #include "GLFW/glfw3.h"
@@ -74,6 +77,7 @@ int main(int args, char *argv[])
 		oldTime = currentTime;
 		currentTime = glfwGetTime();
 		dt = currentTime - oldTime;
+		hudTime = currentTime;
 
 		// track the time that has passed since the last loop cycle
 		renderAccum += dt;

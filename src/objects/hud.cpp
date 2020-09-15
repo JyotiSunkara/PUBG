@@ -200,8 +200,10 @@ void HUD::render() {
 
 	char buffer[20];
 
-	RenderText("TIME", 20.0f, 20.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
-	RenderText("SCORE", 20.0f, 40.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "TIME: %d", 1000 - hudTime);
+	RenderText(buffer, 20.0f, 20.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
+	snprintf(buffer, 20, "SCORE: %d", hudScore);
+	RenderText(buffer, 20.0f, 40.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));
 	int numShotsInClip = player -> getNumShotsInClip();
 	snprintf(buffer, 20, "BULLETS: %d", numShotsInClip);
 	RenderText(buffer, 20.0f, 60.0f, 0.5f, glm::vec3(0.5, 0.8f, 0.2f));

@@ -1,4 +1,6 @@
 #include "objects/player.h"
+#include "objects/hud.h"
+int hudTime;
 
 #include "world/world.h"
 
@@ -174,7 +176,10 @@ void Player::loadSounds()
 
 void Player::update(float dt)
 {
+	if(1000 - hudTime == 0) die();
+
 	controlDeathImpact(dt);
+
 
 	// player can only do things if they're alive
 	if(isAlive())
@@ -189,6 +194,7 @@ void Player::update(float dt)
 
 	controlLooking(dt);
 	controlListener();
+
 }
 
 void Player::renderGun(mat4 &projection, mat4 &view)
@@ -402,6 +408,8 @@ void Player::controlMovingAndFiring(float dt)
 				gunRecoilTimer = 0.0;
 				triggerPressed = true;
 				numShotsInClip --;
+				// Check if he can't reload or shoot anymore 
+				if(numShotsInClip == 0 && numReloads == 0) die();
 
 				// play the gun sound
 				soundManager -> playSound(gunFireSound);

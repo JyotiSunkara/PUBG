@@ -11,7 +11,6 @@ class PlaneRenderer;
 
 extern int hudDrones;
 extern int hudScore;
-extern int hudHealth;
 extern int hudTime;
 
 class HUD {
