@@ -63,6 +63,8 @@ This is cause The Jölnir to fire a bullet at the point pointed at by the reticl
 
     Time Remaining
 
+    Score
+
 
 ## Special Features 
 
@@ -74,6 +76,8 @@ This is cause The Jölnir to fire a bullet at the point pointed at by the reticl
 - Fire Smoke
 - Spray
 - Reticle
+A reticle placed on the screen indicates where the 
+Ammonition count displayed around the reticle as teeny bullets!
 - Sounds
 
     Drone Warning 

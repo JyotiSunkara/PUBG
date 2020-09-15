@@ -40,7 +40,7 @@ int main(int args, char *argv[])
 	const double TARGET_FRAME_INTERVAL = 0.016665;		// slightly smaller than 1/60, our desired time (sec.) between frames
 	const double FRAME_TIME_ALPHA = 0.25;				// degree to which previous frame time is used for delta time computation
 
-	// these handle our very smooth frame timing
+	// these handle the smooth frame timing
 	double dt;											// time since last cycle through loop (*not* time between update/render steps)
 	double currentTime;									// current time according to GLFW
 	double oldTime;										// what the value of currentTime was on the last cycle through loop
@@ -54,7 +54,6 @@ int main(int args, char *argv[])
 	// create our OpenGL window and context, and set some rendering options
 	openWindow();
 	prepareOpenGL();
-
 	// Quick-and-dirty loading screen while everything is loaded and built this will be cleared the next time the buffers are swapped
 	showLoadingScreen();
 

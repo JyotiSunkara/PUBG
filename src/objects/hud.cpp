@@ -11,6 +11,9 @@
 #include "glm/gtc/random.hpp"
 using namespace glm;
 
+#include <ft2build.h>
+#include FT_FREETYPE_H  
+
 const int HUD::NUM_BLOOD_SPLATTERS = 5;
 
 HUD::HUD(Player *player, mat4 &orthoProjection, mat4 &orthoView, vec2 windowSize) {
@@ -62,7 +65,9 @@ void HUD::setupBlood() {
 	}
 }
 
+
 void HUD::render() {
+
 	glDisable(GL_DEPTH_TEST);								// never occluded, always visible
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE,GL_ONE);
@@ -88,6 +93,7 @@ void HUD::render() {
 }
 
 void HUD::renderReticle() {
+
 	mat4 modelMatrix = mat4(1.0);
 	vec4 color = vec4(0.1, 0.1, 0.1, 1.0);
 
