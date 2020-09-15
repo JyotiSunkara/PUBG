@@ -3,6 +3,8 @@
 #include "GL/glew.h"
 #include "glm/glm.hpp"
 
+#include<iostream>
+
 class Shader;
 class Player;
 class PlaneRenderer;
@@ -53,4 +55,6 @@ public:
 	// usual update and render routines
 	void update(float dt);
 	void render();
+
+	void RenderText(std::string text, float x, float y, float scale, glm::vec3 color);
 };

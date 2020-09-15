@@ -129,7 +129,7 @@ void openWindow()
 
 	// explicitly set our OpenGL context to something that doesn't support any old-school shit
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_REFRESH_RATE, 60);
 	#ifdef DEBUG
@@ -144,7 +144,7 @@ void openWindow()
 	// create our OpenGL window using GLFW
     window = glfwCreateWindow(windowWidth, windowHeight,		// specify width and height
 							  TITLE,							// title of window
-							  glfwGetPrimaryMonitor(),		// fullscreen mode
+							  glfwGetPrimaryMonitor(),		    // fullscreen mode
 							  NULL);							// not sharing resources across monitors
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
