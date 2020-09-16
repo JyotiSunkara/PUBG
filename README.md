@@ -284,6 +284,7 @@ Contains the code for the sky, terrain and grass!
 
 ![Shot](media/shooting.gif)
 
-*`Tweet your highscore and tag me!`*
+*`Tweet your highscore!`*
+
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/tterb/hyde.svg?style=social)](https://ctt.ac/Us474)
 

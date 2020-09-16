@@ -1,4 +1,6 @@
 #include "objects/drone.h"
+#include "objects/hud.h"
+int hudScore;
 
 #include "world/world.h"
 
@@ -217,6 +219,9 @@ void Drone::controlDeath()
 
 		// ...blow it up!
 		explode();
+		// Extra five points for killing
+		hudScore += 5;
+
 
 		// play the explosion sound
 		soundManager -> playSound(explodeBuffer, getPos(), EXPLODE_REF_DIST, EXPLODE_MAX_DIST);
@@ -244,6 +249,7 @@ void Drone::handleRayCollision(vec3 dir, vec3 pos)
 
 	impactMotion += dir * 15.0f;
 	health -= RAY_COLLISION_DAMAGE;
+	hudScore += 5;
 }
 
 void Drone::explode()

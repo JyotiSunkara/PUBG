@@ -29,7 +29,6 @@ using namespace glm;
 using namespace std;
 
 int hudDrones = 150;
-int hudScore;
 
 DroneManager::DroneManager(World *world, int maxDrones) {
 	this -> world = world;
@@ -290,7 +289,6 @@ void DroneManager::update(float dt)
 	glBindBuffer(GL_ARRAY_BUFFER, bladesVBOs[3]);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(mat4) * numDrones, modelMats);
 	hudDrones = numDronesAlive;
-	hudScore = (numDrones - numDronesAlive) * 10;
 }
 
 void DroneManager::render(mat4 &projection, mat4 &view) {	
