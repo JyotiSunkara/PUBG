@@ -56,7 +56,7 @@ HUD::HUD(Player *player, mat4 &orthoProjection, mat4 &orthoView, vec2 windowSize
 	}
 
 	FT_Face face;
-	if (FT_New_Face(ft, "/usr/share/fonts/truetype/lato/Lato-Bold.ttf", 0, &face))
+	if (FT_New_Face(ft, "../src/fonts/lato/Lato-Bold.ttf", 0, &face))
 	{
 		fprintf(stderr, "FreeType: Failed to load font\n");
 		return;
