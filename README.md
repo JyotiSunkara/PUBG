@@ -2,6 +2,15 @@
 
 An OpenGL implementation of a three-dimensional third-person-shooter open world game inspired by the wildly popular Player Unknown’s Battlegrounds (PUBG). 
 
+![Tweeting](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fctt.ac%2FUs474)
+
+![Badge](https://img.shields.io/badge/graphics-love-ff69b4)
+
+<div><img src="media/loading.png" 
+         alt="loading" width="49%"><img src="media/screen.png" 
+         alt="screen" width="49%" align="right">
+</div> 
+
 ## Manual
 
 ## **`Argon`**
@@ -28,6 +37,9 @@ Drones are spawned in the world around Argon and as soon as they come into exist
 ## **`Context`**
 
 As soon as the game begins Argon is free to move in the world surrounded by mountains using the controls. `150` drones are spawned in total at different points in time and space. If all `150` drones are annihilated by Argon, he wins the game. If any drone collides with Argon, the game is lost. Argon has a total of `5` health tokens which means he can refill the gun `5` times either manually or automatically. Every refill of the gun gives Argon `30` bullets. The score is calculated based on how many drones Argon has annihilated, where `10` points are given for each annihilated drone! The time remaining is also displayed on the scree which means Argon must get rid of the drones as fast as possible. Argon is given `1000` seconds to complete the mission and hence must remain incentivised to win the game as fast as possible!
+
+
+![Shot](media/loading.gif)
 
 ## Controls
 
@@ -237,7 +249,7 @@ When the player dies from a collision with a drone a blood splatter appears on t
 ## Directory Structure
 
 ### wav
-Contains all the sounds used in the game.
+Contains all the sounds files used in the game.
 
 ### mesh
 Contains the three dimensional models used in the game in both `.blend` and `.obj` formats.
@@ -254,7 +266,7 @@ Contains images used in this README file.
 ## src
 
 #### 3rdparty
-All the libraries and headers installed and used in this game have been added here for convinience.
+All the libraries and headers installed and used in this game have been added here for convinience, except for FreeType which is annoying and doesn't want to listen to my directory structure. :angry:
 
 #### util
 Contains the shader, plane renderer, image loading, and texture loading classes.
@@ -271,4 +283,10 @@ Contains code for the functions that play the sound files.
 #### world
 Contains the code for the sky, terrain and grass!
 
+## **`Enjoy!`**
 
+![Shot](media/shooting.gif)
+
+### Tweet your highscore and tag me! 
+
+![Tweeting](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fctt.ac%2FUs474)
