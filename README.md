@@ -66,7 +66,7 @@ The mouse can be user to orient Argon in the direction of choice by moving it!
 This makes Argon and The Jölnir move forward in the currently facing direction.
 
 ## **`Left Click`**
-This is cause The Jölnir to fire a bullet at the point pointed at by the reticle in the centre of the screen. 
+This causes The Jölnir to fire a bullet at the point pointed at by the reticle in the centre of the screen. 
 
 ## **`ESC`**
 The escape key quits the game! :warning:
@@ -79,7 +79,7 @@ Most Linux distributions rely on the Mesa3D project to provide their OpenGL impl
     > sudo apt-get install build-essential libgl1-mesa-dev
 ```
 
-This projects makes great use of GLEW, GLM and FreeType. So next we install those development libraries.
+This project makes great use of GLEW, GLM and FreeType. So next we install those development libraries.
 
 ```bash
     > sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
