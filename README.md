@@ -2,9 +2,9 @@
 
 An OpenGL implementation of a three-dimensional third-person-shooter open world game inspired by the wildly popular Player Unknown’s Battlegrounds (PUBG). 
 
-![Tweeting](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fctt.ac%2FUs474)
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/tterb/hyde.svg?style=social)](https://ctt.ac/Us474)
 
-![Badge](https://img.shields.io/badge/<3-graphics-ff69b4)
+![Badge](https://img.shields.io/badge/Love-Graphics-ff69b4)
 
 ![loading](media/loading.png) ![screen](media/screen.png)
 
@@ -284,6 +284,6 @@ Contains the code for the sky, terrain and grass!
 
 ![Shot](media/shooting.gif)
 
-### Tweet your highscore and tag me! 
+*`Tweet your highscore and tag me!`*
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/tterb/hyde.svg?style=social)](https://ctt.ac/Us474)
 
-![Tweeting](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fctt.ac%2FUs474)
