@@ -20,6 +20,7 @@ using namespace glm;
 #include <ft2build.h>
 #include FT_FREETYPE_H  
 
+extern vec2 windowSize;	
 const int HUD::NUM_BLOOD_SPLATTERS = 5;
 
 struct Character {
@@ -201,17 +202,17 @@ void HUD::render() {
 	char buffer[20];
 
 	snprintf(buffer, 20, "TIME  %d", 1000 - hudTime);
-	RenderText(buffer, 30.0f, 700.0f, 0.7f, glm::vec3(0.996, 0.113, 0.043));
+	RenderText(buffer, 30.0f,  windowSize.y - 80.0f, 0.7f, glm::vec3(0.996, 0.113, 0.043));
 	snprintf(buffer, 20, "SCORE  %d", hudScore);
-	RenderText(buffer, 30.0f, 660.0f, 0.7f, glm::vec3(0.996, 0.529, 0.003));
+	RenderText(buffer, 30.0f, windowSize.y - 120.0f, 0.7f, glm::vec3(0.996, 0.529, 0.003));
 	int numShotsInClip = player -> getNumShotsInClip();
 	snprintf(buffer, 20, "BULLETS  %d", numShotsInClip);
-	RenderText(buffer, 1100.0f, 660.0f, 0.7f, glm::vec3(0.301, 0.301, 0.301));
+	RenderText(buffer, windowSize.x - 240.0f, windowSize.y - 120.0f, 0.7f, glm::vec3(0.301, 0.301, 0.301));
 	snprintf(buffer, 20, "DRONES  %d", hudDrones);
-	RenderText(buffer, 1100.0f, 620.0f, 0.7f, glm::vec3(0.301, 0.301, 0.301));
+	RenderText(buffer, windowSize.x - 240.0f, windowSize.y - 160.0f, 0.7f, glm::vec3(0.301, 0.301, 0.301));
 	int numReloads = player -> getNumReloads();
 	snprintf(buffer, 20, "HEALTH  %d", numReloads);
-	RenderText(buffer, 1100.0f, 700.0f, 0.7f, glm::vec3(0.003, 0.996, 0.615));
+	RenderText(buffer, windowSize.x - 240.0f, windowSize.y - 80.0f, 0.7f, glm::vec3(0.003, 0.996, 0.615));
 
 
 
