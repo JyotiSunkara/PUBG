@@ -86,6 +86,9 @@ This creates a build directory and copies the Makefile into it. The Makefile gen
 
 The terrain is made of textured tiles simulating bumps and non-uniformity and is surrounded by mountains in all directions!
 
+### Rocks 
+The terrain is sorrounds by montains in all directions with a rocky texture.
+
 ### `Sky`
 The sky is a cloud textured dome placed on the top of the world to create a realistic appearance.
 
@@ -133,46 +136,107 @@ Indicated the points collected by killing the drones. Each killed drone awards A
 
 ### `Bobbing`
 
+Both Argon and The Jölnir have a bobbing motion when walking. This is modelled using the sine curve!
 
 ### `Recoil`
+
+When a bullet is fired The Jölnir jerks upward in a recoil motion and a flash of light is seen at the muzzle.
+
 ### `Reload`
-### `Shooting Spark`
+
+When manual or sutomatic reload is triggered, the gun goes downwards and comes back up with a reloading noise.
+
+### `Muzzel Flash`
+
+When a bullet is shot a flash of light is seen at the muzzle of the gun.
+
 ### `Waving Grass`
+
+The grass around Argon changes position slighlty across every frame, simulating a waving effect.
+
 ### `Fire Smoke`
-### `Spray`
+
+When a drone is annihilated it dissapears in a flash of fire and smoke particles!
+
+### `Dirt Spray`
+
+When the ground is shot a spray of dirt particles errupts just like in the real world.
+
+### `Smoke Hit`
+
+When a tree or the signboard or the mountains are shot a small cloud of smoke apprears at the hit area.
+
 ### `Reticle`
-A reticle placed on the screen indicates where the 
-Ammonition count displayed around the reticle as teeny bullets!
+A reticle placed on the screen indicates where the bullet will be directed when The Jolnir is fired.
+Ammonition count is displayed around the reticle as teeny bullets!
+
+### Death Impact
+
+When the cause of the game to end is a collision with a drone the camera tilts back to simulate the effect of collision before the blood splatter appears on the screen.
+
 ### `Sounds`
-    Drone Warning 
 
-    Nature
+There are multiple sounds in order to simulate a real and entertaining gaming experience.
 
-    Shot
+- Nature
 
-    Hit
+A birds and breeze sound track constantly plays in the background when the game begins.
 
-    Explode
+- Drone Warning
 
-    Splatter
+When the drone is within 20 metres of Argon it emits a warning sound.
+
+- Shot
+
+When The Jölnir is fired the gunshot is heard.
+
+- Drone Hover
+
+All drones are constantly making a hovering noise.
+
+- Explode
+
+When the drone is shot three times, the explosion of the drone into flames is heard.
 
 - Blood Splatter
-- Death Impact
 
+When the player dies from a collision with a drone a blood splatter appears on the screen along with a squelchy sound.
 
 ## Directory Structure
 
 ### wav
-All the libraries and headers installed and used in this game have been added here for convinience.
+Contains all the sounds used in the game.
 
 ### mesh
+Contains the three dimensional models used in the game in both `.blend` and `.obj` formats.
+
 ### png
+Contains all the images and textures used in the game.
+
 ### shaders
+Conatins all the GLSL shaders written for vertices and fragments in the game.
+
 ### images
-### src
+Contains images used in this README file.
+
+## src
+
 #### 3rdparty
+All the libraries and headers installed and used in this game have been added here for convinience.
+
 #### util
+Contains the shader, plane renderer, image loading, and texture loading classes.
+
 #### objects
+Contains collision code, drones, trees, sign board and heads up display code.
+
 #### partilces
+Contains all the code for the particle explosions.
+
 #### audio
+Contains code for the functions that play the sound files.
+
 #### world
+Contains the code for the sky, terrain and grass!
+
+
