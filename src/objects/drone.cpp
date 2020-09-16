@@ -220,7 +220,7 @@ void Drone::controlDeath()
 		// ...blow it up!
 		explode();
 		// Extra five points for killing
-		hudScore += 5;
+		hudScore += 10;
 
 
 		// play the explosion sound

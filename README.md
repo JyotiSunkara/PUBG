@@ -6,7 +6,9 @@ An OpenGL implementation of a three-dimensional third-person-shooter open world 
 
 ![Badge](https://img.shields.io/badge/Love-Graphics-ff69b4)
 
-![loading](media/loading.png) ![screen](media/screen.png)
+![loading](media/loading.png) 
+
+![screen](media/screen.png)
 
 ## Manual
 
@@ -33,7 +35,7 @@ Drones are spawned in the world around Argon and as soon as they come into exist
 
 ## **`Context`**
 
-As soon as the game begins Argon is free to move in the world surrounded by mountains using the controls. `150` drones are spawned in total at different points in time and space. If all `150` drones are annihilated by Argon, he wins the game. If any drone collides with Argon, the game is lost. Argon has a total of `5` health tokens which means he can refill the gun `5` times either manually or automatically. Every refill of the gun gives Argon `30` bullets. The score is calculated based on how many drones Argon has annihilated, where `10` points are given for each annihilated drone! The time remaining is also displayed on the scree which means Argon must get rid of the drones as fast as possible. Argon is given `1000` seconds to complete the mission and hence must remain incentivised to win the game as fast as possible!
+As soon as the game begins Argon is free to move in the world surrounded by mountains using the controls. `150` drones are spawned in total at different points in time and space. If all `150` drones are annihilated by Argon, he wins the game. If any drone collides with Argon, the game is lost. Argon has a total of `5` health tokens which means he can refill the gun `5` times either manually or automatically. Every refill of the gun gives Argon `30` bullets. The score is calculated based on how many drones Argon has annihilated, where `10` points are given for killing a drone and `5` points for a damage causing shot! The time remaining is also displayed on the screen which means Argon must get rid of the drones as fast as possible. Argon is given `1000` seconds to complete the mission and hence must remain incentivised to win the game as fast as possible!
 
 
 ![Shot](media/loading.gif)
@@ -88,7 +90,7 @@ To play the game by running the excecutable, do the following!
     > ./run.sh
 ```
 
-This creates a build directory and copies the Makefile into it. The Makefile generates all the required `.o` files and stores them in an `obj` directory located in `build`. Then the excecutable is created and stored in the build directory. Finally, the excecutable is run!
+This creates a build directory and copies the Makefile into it. The Makefile generates all the required `.o` files and stores them in an `obj` directory located in `build`. Then the excecutable is created and is also stored in the `build` directory. Finally, the excecutable is run!
 
 ## Features 
 ### `Terrain` 
@@ -110,8 +112,9 @@ Trees are placed in the world at random points in space and are made of tapering
 ### `World`
 The world is made of the terrain, sky, grass, trees and mountains all put together under a sun beating dowm as the only source of light! :sunrise_over_mountains:
 
-<div style="text-align:center"><img src="media/world.png" 
-         alt="World"></div> 
+<div style="text-align:center">
+<img src="media/world.png" 
+     alt="World"></div> 
 
 ### `Shooter`
 The shooter is the cyborg character Argon with a shiny steel suit of armour. 

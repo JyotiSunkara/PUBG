@@ -118,7 +118,7 @@ int main(int args, char *argv[])
 
 void openWindow()
 {
-	const char *TITLE = "Argon And Jölnir Versus The Drones";
+	const char *TITLE = "Game Of Drones";
 
 	int windowWidth;
 	int windowHeight;
