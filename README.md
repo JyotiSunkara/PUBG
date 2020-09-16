@@ -4,12 +4,9 @@ An OpenGL implementation of a three-dimensional third-person-shooter open world 
 
 ![Tweeting](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fctt.ac%2FUs474)
 
-![Badge](https://img.shields.io/badge/graphics-love-ff69b4)
+![Badge](https://img.shields.io/badge/<3-graphics-ff69b4)
 
-<div><img src="media/loading.png" 
-         alt="loading" width="49%"><img src="media/screen.png" 
-         alt="screen" width="49%" align="right">
-</div> 
+![loading](media/loading.png) ![screen](media/screen.png)
 
 ## Manual
 
