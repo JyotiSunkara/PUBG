@@ -83,6 +83,7 @@ This project makes great use of GLEW, GLM and FreeType. So next we install those
 
 ```bash
     > sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
+    > sudo apt-get build-dep glfw3
 ```
 ### Running 
 To play the game by running the excecutable, do the following!
