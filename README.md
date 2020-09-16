@@ -3,6 +3,7 @@
 An OpenGL implementation of a three-dimensional third-person-shooter open world game inspired by the wildly popular Player Unknown’s Battlegrounds (PUBG). 
 
 *`Click to tweet your highscore!`*
+
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/tterb/hyde.svg?style=social)](https://ctt.ac/Us474)
 
 ![Badge](https://img.shields.io/badge/Love-Graphics-ff69b4)
