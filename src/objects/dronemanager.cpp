@@ -28,7 +28,7 @@ using namespace glm;
 #include <iostream>
 using namespace std;
 
-int hudDrones = 200;
+int hudDrones = 150;
 int hudScore;
 
 DroneManager::DroneManager(World *world, int maxDrones) {
