@@ -204,30 +204,23 @@ void showLoadingScreen()
 	const float ORTHO_FAR_RANGE = 1.0;
 
 	// how we want to the logo to appear
-	vec4 LOGO_COLOR(1.0, 1.0, 1.0, 0.1);
-	const vec3 LOGO_SIZE(256.0, 256.0, 0.0);
+	vec4 LOGO_COLOR(1.0, 1.0, 1.0, 1.0);
+	const vec3 LOGO_SIZE(700.0, 400.0, 0.0);
 	const vec3 LOGO_POSITION(windowSize.x / 2.0f, windowSize.y / 2.0f, 0.0);
-
-	// how we want the loading message to appear
-	vec4 LOADING_COLOR(1.0, 1.0, 1.0, 0.7);
-	const vec3 LOADING_SIZE(128.0, 128.0, 0.0);
-	const vec2 LOADING_MARGIN(100, 50);
-	const vec3 LOADING_POSITION(windowSize.x - LOADING_MARGIN.x, LOADING_MARGIN.y, 0.0);
 
 	// this handles our rendering efficiently
 	PlaneRenderer *planes = PlaneRenderer::getInstance();
 
 	// load the "no drones" texture and the "loading" texture
 	GLuint logo = loadPNG("../png/no-drones.png");
-	GLuint loading = loadPNG("../png/loading.png");
 
 	// compute the plane renderer's viewing params
 	mat4 orthoProjection = ortho(0.0f, (float)windowSize.x, 0.0f, (float)windowSize.y, ORTHO_NEAR_RANGE, ORTHO_FAR_RANGE);
 	mat4 orthoView = mat4(1.0);
 	mat4 model;
 
-	// dark grey background
-	glClearColor(0.09, 0.09, 0.09, 0.0);
+	// dark black
+	glClearColor(0.00, 0.00, 0.00, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// set the plane renderer's viewing parameters
@@ -241,15 +234,6 @@ void showLoadingScreen()
 	model = translate(model, LOGO_POSITION);
 	model = scale(model, LOGO_SIZE);
 	planes -> setColor(LOGO_COLOR);
-	planes -> setModelMatrix(model);
-    planes -> render();
-
-	// draw loading message
-	glBindTexture(GL_TEXTURE_2D, loading);
-	model = mat4(1.0);
-	model = translate(model, LOADING_POSITION);
-	model = scale(model, LOADING_SIZE);
-	planes -> setColor(LOADING_COLOR);
 	planes -> setModelMatrix(model);
     planes -> render();
 

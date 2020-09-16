@@ -95,7 +95,7 @@ void World::createWorld(string worldFile)
 
 	const int MAX_PARTICLES = 5000;									// maximum number of particles we want in the world
 
-	const int NUM_DRONES = 150;										// how many drones to insert into the world
+	const int NUM_DRONES = 200;										// how many drones to insert into the world
 
 	// instructional sign position
 	const vec3 SIGN_PLAYER_OFFSET(-3.5, 0.0, -6.5);

@@ -17,7 +17,7 @@ using namespace glm;
 
 #include <iostream>
 #include <map>
-#include <ft2build.h>
+#include "freetype2/ft2build.h"
 #include FT_FREETYPE_H  
 
 const int HUD::NUM_BLOOD_SPLATTERS = 5;
